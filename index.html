@@ -11,17 +11,17 @@
 
 <body class="darkTheme">
 
-  <header>
+  <header class="darkHeader">
     <h1 class="globalTitle">Generador de Memes</h1>
       <!-- --------------------------------------------------- -->
       <!--  DARK MODE BUTTON // LIGHT MODE BUTTON-->
       <!-- --------------------------------------------------- -->
     <div class="buttonTheme__dark-light">
       <button class="buttonDarkTheme" id="buttonDarkTheme" aria-label="Cambiar a modo oscuro">
-        <img src="./assets/svg/lampOffWhite.svg" alt="cambiar a modo oscuro">Modo oscuro
+        <img class="imgButtons" src="./assets/svg/lampOffWhite.svg" alt="cambiar a modo oscuro">Modo oscuro
       </button>
       <button class="buttonLightTheme" id="buttonLightTheme" aria-label="Cambiar a modo claro">
-        <img src="./assets/svg/lampOnBlack.svg" alt="cambiar a modo claro">Modo claro
+        <img class="imgButtons" src="./assets/svg/lampOnBlack.svg" alt="cambiar a modo claro">Modo claro
       </button>
       </button>
     </div>
@@ -38,7 +38,7 @@
         <p>TEXTO INFERIOR</p>
       </div>
       <!-- DOWNLOAD BUTTON -->
-      <button type="button" class="buttonDownloadMeme" id="buttonDownloadMeme"> <img src="./assets/svg/download.svg"
+      <button type="button" class="buttonDownloadMeme" id="buttonDownloadMeme"> <img class="imgButtons" src="./assets/svg/download.svg"
           alt="descargar meme"> Descargar meme</button>
     </div>
 
@@ -53,19 +53,21 @@
       <!-- NAV GENERAL PANEL -->
       <!-- --------------------------------------------------- -->
 
-      <button class="buttonClose" id="buttonClose" aria-label="Cerrar ventana">
-        <img src="./assets/svg/close.svg" alt="cerrar ventana">
-      </button>
-      <nav>
-        <ul>
-          <li><img src="./assets/svg/img.svg" alt="icono de la sección para modificar la imagen">
+      
+      <nav class="generalPanel__nav darkNav">
+        <button class="buttonClose" id="buttonClose" aria-label="Cerrar ventana">
+          <img class="imgButtons" src="./assets/svg/close.svg" alt="cerrar ventana">
+        </button>
+        <ul class="generalPanel__ul">
+          <li class="generalPanel__li"><img class="imgButtons" src="./assets/svg/img.svg" alt="icono de la sección para modificar la imagen">
             <p>IMAGEN</p>
           </li>
-          <li><img src="./assets/svg/text.svg" alt="icono de la sección para modificar el texto">
+          <li class="generalPanel__li"><img class="imgButtons" src="./assets/svg/text.svg" alt="icono de la sección para modificar el texto">
             <p>TEXTO</p>
           </li>
         </ul>
       </nav>
+      
 
       <!-- ---------------------------------------------------
         PANEL SECTION TO MODIFY IMAGE
@@ -210,14 +212,14 @@
               <div class="textPanel__align">
                 <button class="textPanelAlign__left" id="textPanelAlign__left"
                   aria-label="Alinear texto a la izquierda">
-                  <img src="./assets/svg/textAlignLeft.svg" alt="Alinear texto a la izquierda">
+                  <img class="imgButtons" class="imgButtons" src="./assets/svg/textAlignLeft.svg" alt="Alinear texto a la izquierda">
                 </button>
                 <button class="textPanelAlign__center" id="textPanelAlign__center" aria-label="Centrar texto">
-                  <img src="./assets/svg/text.svg" alt="Centrar texto">
+                  <img class="imgButtons" src="./assets/svg/text.svg" alt="Centrar texto">
                 </button>
                 <button class="textPanelAlign__right" id="textPanelAlign__right"
                   aria-label="Alinear texto a la derecha">
-                  <img src="./assets/svg/textAlignRight.svg" alt="Alinear texto a la derecha">
+                  <img class="imgButtons" src="./assets/svg/textAlignRight.svg" alt="Alinear texto a la derecha">
                 </button>
               </div>
             </div>
@@ -281,8 +283,8 @@
     </aside>
   </main>
 </body>
-<footer>
+<!-- <footer>
         <p>© 2024 Trinidad Lari</p>
-</footer>
+</footer> -->
 <script src="main.js"></script>
 </html>
