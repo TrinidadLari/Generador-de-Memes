@@ -210,3 +210,118 @@ imgZombie.addEventListener("click", (e) => {
 //--------------------------------------------------
 //                ZOMBIE END <---------
 //--------------------------------------------------
+
+
+
+//--------------------------------------------------
+//                ADD TEXT START <---------
+//--------------------------------------------------
+
+
+// GET HTML ELEMENT
+
+document.addEventListener('DOMContentLoaded', () => {
+  const topTextInput = document.getElementById('topText');
+  const bottomTextInput = document.getElementById('bottomText');
+  const noTopTextCheckbox = document.getElementById('noTopText');
+  const noBottomTextCheckbox = document.getElementById('noBottomText');
+  const memeBoxTop = document.getElementById('memeBox__top');
+  const memeBoxBottom = document.getElementById('memeBox__bottom');
+  const memeBoxPreview = document.getElementById('memeBox__preview');
+  const imgMeme = document.getElementById('imgMeme');
+  const memeBoxTopText = document.getElementById('memeBox__topText');
+  const memeBoxBottomText = document.getElementById('memeBox__bottomText');
+
+  // STORES ORIGINAL STYLE
+
+  const initialStylesTop = {
+    display: memeBoxTop.style.display,
+    height: imgMeme.style.height,
+  };
+
+  const initialStylesBottom = {
+    display: memeBoxBottom.style.display,
+    height: imgMeme.style.height,
+  };
+
+  // EVENTS FOR TOP/BOTTOM TEXT
+
+  topTextInput.addEventListener('input', (e) => {
+    updateText(e, memeBoxTopText);
+  });
+
+  bottomTextInput.addEventListener('input', (e) => {
+    updateText(e, memeBoxBottomText);
+  });
+
+  noTopTextCheckbox.addEventListener('change', () => {
+    toggleTextDisplay(noTopTextCheckbox, memeBoxTop, initialStylesTop);
+  });
+
+  noBottomTextCheckbox.addEventListener('change', () => {
+    toggleTextDisplay(noBottomTextCheckbox, memeBoxBottom, initialStylesBottom);
+  });
+
+
+//SYNCHRONIZES THE TEXT ENTERED WITH THAT OF THE MEME
+
+  const updateText = (e, outputElement) => {
+    outputElement.textContent = e.target.value;
+  };
+
+// CHECKBOX TRUE / FALSE
+
+  const toggleTextDisplay = (checkbox, containerElement, initialStyles) => {
+    if (checkbox.checked) {
+      containerElement.style.display = 'none';
+      memeBoxPreview.style.gridTemplateRows = '70% 15%';
+      imgMeme.style.height = '100%';
+      console.log('Hidden upper text');
+    } else {
+      containerElement.style.display = 'flex';
+      memeBoxPreview.style.gridTemplateRows = initialStyles.gridTemplateRows;
+      imgMeme.style.height = initialStyles.height;
+      containerElement.style.alignItems = 'center'; 
+      containerElement.style.justifyContent = 'center'; 
+      console.log('Top text shown');
+    }
+  };
+
+  // DELETES DEFAULT TEXT
+
+  topTextInput.addEventListener('focus', (e) => {
+    clearDefaultText(e, 'INGRESAR TEXTO SUPERIOR');
+  });
+
+  bottomTextInput.addEventListener('focus', (e) => {
+    clearDefaultText(e, 'INGRESAR TEXTO INFERIOR');
+  });
+
+  const clearDefaultText = (e, defaultText) => {
+    if (e.target.value === defaultText) {
+      e.target.value = '';
+    }
+  };
+
+  //ENTER NO DEFAULT BEHAVIOR AND REMOVE FOCUS
+
+  topTextInput.addEventListener('keypress', (e) => {
+    handleEnterKey(e, memeBoxTopText);
+  });
+
+  bottomTextInput.addEventListener('keypress', (e) => {
+    handleEnterKey(e, memeBoxBottomText);
+  }); 
+
+  const handleEnterKey = (e, textElement) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      textElement.blur();
+    }
+  };
+});
+
+
+//--------------------------------------------------
+//                ADD TEXT START <---------
+//--------------------------------------------------

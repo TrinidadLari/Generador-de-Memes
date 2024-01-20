@@ -128,28 +128,35 @@ header {
 .memeBox__preview {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
   height: 300px;
   width: 80%;
-  background-color: white;
-  color: var(--color100);
   margin-bottom: 20px;
-  padding-block: 10px;
   box-shadow: var(--shadow1);
 
 }
+
+.memeBox__top,
+.memeBox__bottom{
+  background-color: white;
+  height: 15%;
+  width: 100%;
+
+}
+
 
 .imgMeme {
   height: 70%;
   background-color: black;
   width: 100%;
-
+  object-fit: cover;
+  object-position: center left;
 }
 
 .memeBox__preview p {
   font-size: larger;
   font-family: var(--fontFamily2);
+  text-align: center;
+ margin-top: 10px;
 }
 
 .buttonDownloadMeme {
