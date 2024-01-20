@@ -9,20 +9,19 @@
   <title>Generador de Memes</title>
 </head>
 
-<body class="darkTheme">
+<body class="darkBody" id="darkBody">
 
-  <header class="darkHeader">
+  <header class="darkHeader" id="darkHeader">
     <h1 class="globalTitle">Generador de Memes</h1>
-      <!-- --------------------------------------------------- -->
-      <!--  DARK MODE BUTTON // LIGHT MODE BUTTON-->
-      <!-- --------------------------------------------------- -->
-    <div class="buttonTheme__dark-light">
+    <!-- --------------------------------------------------- -->
+    <!--  DARK MODE BUTTON // LIGHT MODE BUTTON-->
+    <!-- --------------------------------------------------- -->
+    <div class="buttonTheme__dark-light" id="buttonTheme__dark-light">
       <button class="buttonDarkTheme" id="buttonDarkTheme" aria-label="Cambiar a modo oscuro">
         <img class="imgButtons" src="./assets/svg/lampOffWhite.svg" alt="cambiar a modo oscuro">Modo oscuro
       </button>
       <button class="buttonLightTheme" id="buttonLightTheme" aria-label="Cambiar a modo claro">
         <img class="imgButtons" src="./assets/svg/lampOnBlack.svg" alt="cambiar a modo claro">Modo claro
-      </button>
       </button>
     </div>
   </header>
@@ -30,52 +29,54 @@
     <!-- --------------------------------------------------- -->
     <!--  SECTION TO CREATE THE MEME -->
     <!-- --------------------------------------------------- -->
-    <div class="memeBox">
-      <div class="memeBox__preview">
+    <div class="memeBox" id="memeBox">
+      <div class="memeBox__preview" id="memeBox__preview">
         <p>TEXTO SUPERIOR</p>
         <!-- UPLOAD IMAGE FOR MEME -->
-        <div src="" alt="" id="imgMeme" aria-label="Subir imagen del meme"></div>
+        <div class="imgMeme" src="" alt="" id="imgMeme" aria-label="Imagen del meme"></div>
         <p>TEXTO INFERIOR</p>
       </div>
       <!-- DOWNLOAD BUTTON -->
-      <button type="button" class="buttonDownloadMeme" id="buttonDownloadMeme"> <img class="imgButtons" src="./assets/svg/download.svg"
-          alt="descargar meme"> Descargar meme</button>
+      <button type="button" class="buttonDownloadMeme" id="buttonDownloadMeme"> <img class="imgButtons"
+          src="./assets/svg/download.svg" alt="descargar meme"> Descargar meme</button>
     </div>
 
     <!-- --------------------------------------------------- -->
     <!--  ASIDE // CONTROL PANEL -->
     <!-- --------------------------------------------------- -->
 
-
-    <aside class="hiddenPanel">
+    <img class="imgZombie" id="imgZombie" src="./assets/jpg/zombie.png" alt="Imagen Zombie">
+    <aside class="hiddenPanelAside darkAside" id="hiddenPanelAside">
 
       <!-- --------------------------------------------------- -->
       <!-- NAV GENERAL PANEL -->
       <!-- --------------------------------------------------- -->
 
-      
-      <nav class="generalPanel__nav darkNav">
+
+      <nav class="generalPanel__nav darkNav" id="darkNav">
         <button class="buttonClose" id="buttonClose" aria-label="Cerrar ventana">
           <img class="imgButtons" src="./assets/svg/close.svg" alt="cerrar ventana">
         </button>
-        <ul class="generalPanel__ul">
-          <li class="generalPanel__li"><img class="imgButtons" src="./assets/svg/img.svg" alt="icono de la sección para modificar la imagen">
+        <ul class="generalPanel__ul" id="generalPanel__ul">
+          <li class="generalPanel__li" id="generalPanelLi__img"><img class="imgButtons" src="./assets/svg/img.svg"
+              alt="icono de la sección para modificar la imagen">
             <p>IMAGEN</p>
           </li>
-          <li class="generalPanel__li"><img class="imgButtons" src="./assets/svg/text.svg" alt="icono de la sección para modificar el texto">
+          <li class="generalPanel__li" id="generalPanelLi__text"><img class="imgButtons" src="./assets/svg/text.svg"
+              alt="icono de la sección para modificar el texto">
             <p>TEXTO</p>
           </li>
         </ul>
       </nav>
-      
+
 
       <!-- ---------------------------------------------------
         PANEL SECTION TO MODIFY IMAGE
         --------------------------------------------------- -->
 
-      <section class="imgPanel imgHiddenPanel" id="imgPanel">
-        <h2 class="imgPanel__title">IMAGEN</h2>
-        <div class="imgPanelControl__imgUpload">
+      <section class="imgPanel  imgHiddenPanel darkImgPanel" id="imgPanel">
+        <h2 class="imgPanel__title" id="imgPanel__title">IMAGEN</h2>
+        <div class="imgPanelControl__imgUpload" id="imgPanelControl__imgUpload">
           <label for="imgUpload__url" class="ControlPanel__title">URL</label>
           <input type="text" class="imgUpload__url" id="imgUpload__url" aria-label="URL de imagen">
           <label for="imgUpload__pc" class="ControlPanel__title">IMG PC</label>
@@ -84,9 +85,9 @@
 
         <!-- BACKGROUND -->
 
-        <div class="imgControlPanel__background">
+        <div class="imgControlPanel__background" id="imgControlPanel__background">
           <h3 class="ControlPanel__title">FONDO</h3>
-          <div>
+          <div class="imgControlPanel-background__box" id="imgControlPanel-background__box">
             <input type="color" id="imgControlPanel-background__color" value="#F70094"
               aria-label="Modificar color de fondo de la imagen">
             <select name="background-imgMeme" class="imgControlPanel-background__comp"
@@ -104,7 +105,7 @@
 
         <!-- FILTERS-->
 
-        <div class="imgControlPanel__filters">
+        <div class="imgControlPanel__filters" id="imgControlPanel__filters">
           <h3 class="ControlPanel__title">FILTROS</h3>
           <div class="divFilters">
             <label for="filters__brightness">BRILLO</label>
@@ -123,7 +124,7 @@
           </div>
           <div class="divFilters">
             <label for="filters__blur">DESENFOQUE</label>
-            <input type="range" id="filters__blur" aria-label="Modificar el desenfoque" min="0" max="1" value="0"
+            <input type="range" id="filters__blur" aria-label="Modificar el desenfoque" min="0" max="10" value="0"
               step="0.01">
           </div>
           <div class="divFilters">
@@ -143,8 +144,8 @@
           </div>
           <div class="divFilters">
             <label for="filters__saturate">SATURACIÓN</label>
-            <input type="range" id="filters__saturate" aria-label="Modificar la saturación" min="0" max="100" value="50"
-              step="1">
+            <input type="range" id="filters__saturate" aria-label="Modificar la saturación" min="100" max="1000"
+              value="100" step="1">
           </div>
           <div class="divFilters">
             <label for="filters__negative">NEGATIVO</label>
@@ -153,15 +154,15 @@
           </div>
         </div>
         <button type="button" class="buttonResetFilters" id="buttonResetFilters">Restablecer Filtros</button>
-
+        <!-- filter: brightness(0.9) opacity(0.9) blur(0.5px) contrast(159%) grayscale(6%) hue-rotate(61deg) sepia(46%) saturate(870%) invert(0.9); -->
       </section>
 
       <!-- ---------------------------------------------------
         PANEL SECTION TO MODIFY TEXT
         --------------------------------------------------- -->
 
-      <section class="textPanel textHiddenPanel" id="textPanel">
-        <h2 class="textPanel__title">TEXTO</h2>
+      <section class="textPanel textHiddenPanel darkTextPanel" id="textPanel">
+        <h2 class="textPanel__title" id="textPanel__title">TEXTO</h2>
         <div class="textPanel__control">
           <h3 class="ControlPanel__title">SUPERIOR</h3>
           <textarea name="topText" class="topText" id="topText" cols="22" rows="1"
@@ -181,9 +182,9 @@
 
         <!-- FONTS  -->
 
-        <div class="textPanel__control">
+        <div class="textPanel__control" id="textPanel__control">
           <h3 class="ControlPanel__title">FUENTES</h3>
-          <div class="textPanelControl__typography">
+          <div class="textPanelControl__typography" id="textPanelControl__typography">
             <select name="textPanel__fonts" class="textPanel__fonts" id="textPanel__fonts" title="fonts"
               aria-label="seleccionar fuente">
               <option value="Arial">Arial</option>
@@ -206,13 +207,13 @@
 
             <!-- SIZE AND ALIGN TEXT -->
 
-            <div class="textPanel__size&align">
+            <div class="textPanel__sizeAlign" id="textPanel__size&align">
               <input type="number" id="textPanel__size" class="textPanel__size" aria-label="Fuentes de letras" min="10"
                 max="90" value="40" step="1">
-              <div class="textPanel__align">
+              <div class="textPanel__align" id="textPanel__align">
                 <button class="textPanelAlign__left" id="textPanelAlign__left"
                   aria-label="Alinear texto a la izquierda">
-                  <img class="imgButtons" class="imgButtons" src="./assets/svg/textAlignLeft.svg" alt="Alinear texto a la izquierda">
+                  <img class="imgButtons" src="./assets/svg/textAlignLeft.svg" alt="Alinear texto a la izquierda">
                 </button>
                 <button class="textPanelAlign__center" id="textPanelAlign__center" aria-label="Centrar texto">
                   <img class="imgButtons" src="./assets/svg/text.svg" alt="Centrar texto">
@@ -228,19 +229,19 @@
 
         <!-- COLOR -->
 
-        <div class="textPanelControl__color">
-          <div class="colorLetter">
+        <div class="textPanelControl__color" id="textPanelControl__color">
+          <div class="colorLetter" id="colorLetter">
             <label for="color__letter" class="ControlPanel__title">COLOR</label>
             <input type="color" id="color__letter" class="color__letter" name="color__letter" value="#F70094"
               aria-label="Color del texto">
           </div>
-          <div class="colorBackground">
+          <div class="colorBackground" id="colorBackground">
             <label for="color__background" class="ControlPanel__title">FONDO</label>
             <input type="color" id="color__background" class="color__background" name="color__letter" value="#FFFFFF"
               aria-label="Color del texto">
           </div>
         </div>
-        <div class="textPanelControl__transparent">
+        <div class="textPanelControl__transparent" id="textPanelControl__transparent">
           <label for="transparent__background">Fondo Transparente</label>
           <input type="checkbox" name="transparent__background" id="transparent__background"
             aria-label="Fondo transparente">
@@ -248,26 +249,26 @@
 
         <!-- CONTOUR -->
 
-        <div class="textPanelControl__contour">
+        <div class="textPanelControl__contour" id="textPanelControl__contour">
           <h3 class="ControlPanel__title">CONTORNO</h3>
-          <div class="buttonBox">
-            <button class="buttonContour__none">Ninguno</button>
-            <button class="buttonContour__white">Claro</button>
-            <button class="buttonContour__black">Oscuro</button>
+          <div class="buttonBox" id="buttonBox">
+            <button class="buttonContour__none" id="buttonContour__none">Ninguno</button>
+            <button class="buttonContour__white" id="buttonContour__white">Claro</button>
+            <button class="buttonContour__black" id="buttonContour__black">Oscuro</button>
           </div>
         </div>
 
         <!-- PADDING -->
 
-        <div class="textPanelControl__padding">
-          <label for="padding__input" class="padding__label">ESPACIADO</label>
-          <input type="number" name="padding__input" id="padding__input" aria-label="Espaciados del texto" min="5"
-            max="50" step="5" value="15">
+        <div class="textPanelControl__padding" id="textPanelControl__padding">
+          <label for="padding__input" class="ControlPanel__title" id="padding__label">ESPACIADO</label>
+          <input type="number" name="padding__input" class="padding__input" id="padding__input"
+            aria-label="Espaciados del texto" min="5" max="50" step="5" value="15">
         </div>
 
         <!-- INTERLINE -->
 
-        <div class="textPanelControl__interline">
+        <div class="textPanelControl__interline" id="textPanelControl__interline">
           <h3 class="ControlPanel__title">INTERLINEADO</h3>
           <select name="interline__options" id="interline__options" class="interline__options"
             aria-label="Interlineado">
@@ -282,9 +283,11 @@
       </section>
     </aside>
   </main>
+  <footer class="darkFooter" id="darkFooter">
+    <p>© 2024 Trinidad Sabina Lari</p>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
-<!-- <footer>
-        <p>© 2024 Trinidad Lari</p>
-</footer> -->
-<script src="main.js"></script>
+
 </html>
