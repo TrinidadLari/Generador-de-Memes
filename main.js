@@ -218,7 +218,7 @@ imgZombie.addEventListener("click", (e) => {
 //--------------------------------------------------
 
 
-// GET HTML ELEMENT
+// GET HTML ELEMENTS
 
 document.addEventListener('DOMContentLoaded', () => {
   const topTextInput = document.getElementById('topText');
@@ -321,7 +321,70 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 });
 
+//--------------------------------------------------
+//                ADD TEXT END <---------
+//--------------------------------------------------
+
 
 //--------------------------------------------------
-//                ADD TEXT START <---------
+//          MEME DOWNLOAD BUTTON START <---------
+//--------------------------------------------------
+
+// GET HTML ELEMENT
+
+const buttonDownloadMeme= document.getElementById('buttonDownloadMeme');
+
+
+//ADD BUTTON CLICK EVENT, GENERATE AN IMG FROM THE DIV, SAVE THE GENERATED IMG
+
+buttonDownloadMeme.addEventListener('click', ()=>
+    domtoimage.toBlob(document.getElementById('memeBox__preview')).then(blob => saveAs (blob, 'mi-meme.png'))
+)
+console.log("dom-to-image Blob created:", blob);
+console.log("mi-meme.png saved.");
+
+//// GET HTML ELEMENT
+
+document.addEventListener("DOMContentLoaded", () => {
+  const buttonDownloadMeme = document.getElementById("buttonDownloadMeme");
+
+//ADD EVENT CLICK TO DOWNLOAD BUTTON
+
+  buttonDownloadMeme.addEventListener("click", () => {
+    const memeBoxPreview = document.getElementById("memeBox__preview");
+
+    // CAPTURES THE CONTENT OF THE DIV AS IMG
+
+    html2canvas(memeBoxPreview, { useCORS: true }).then(canvas => {
+      console.log("html2canvas Canvas created:", canvas);
+      
+      // CONVERTS CONTENT TO A BLOB AND ASSIGNS IT A URL
+      canvas.toBlob(blob => {
+        console.log("Blob created:", blob);
+        const url = window.URL.createObjectURL(blob);
+
+        // CREATES TEMPORARY LINK FOR DOWNLOAD
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "meme.png";
+
+        // APPLY THE LINK TO THE DOCUMENT
+        document.body.appendChild(a);
+        console.log("Download link added to the document.");
+        a.click();
+        console.log("Simulating click on the download link.");
+
+        // CLEAN THE LINK
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+        console.log("Download link removed and URL object revoked.");
+      });
+    });
+  });
+});
+
+
+//--------------------------------------------------
+//          MEME DOWNLOAD BUTTON END <---------
 //--------------------------------------------------

@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="./assets/svg/lol.svg" type="image/x-icon">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <title>Generador de Memes</title>
 </head>
 
@@ -35,7 +37,7 @@
           <p class="memeBox__topText" id="memeBox__topText">TEXTO SUPERIOR</p>
         </div>
         <!-- UPLOAD IMAGE FOR MEME -->
-        <div class="imgMeme" src="" alt="" id="imgMeme" aria-label="Imagen del meme"></div>
+        <div class="imgMeme" src="" alt="" id="imgMeme" aria-label="Imagen del meme" crossorigin="anonymous"></div>
         <div class="memeBox__bottom" id="memeBox__bottom">
           <p class="memeBox__bottomText" id="memeBox__bottomText">TEXTO INFERIOR</p>
         </div>
@@ -82,7 +84,7 @@
         <h2 class="imgPanel__title" id="imgPanel__title">IMAGEN</h2>
         <div class="imgPanelControl__imgUpload" id="imgPanelControl__imgUpload">
           <label for="imgUpload__url" class="ControlPanel__title">URL</label>
-          <input type="text" class="imgUpload__url" id="imgUpload__url" aria-label="URL de imagen">
+          <input type="text" class="imgUpload__url" id="imgUpload__url" aria-label="URL de imagen" crossorigin="anonymous">
           <label for="imgUpload__pc" class="ControlPanel__title">IMG PC</label>
           <input type="file" name="imgUpload__pc" id="imgUpload__pc" accept="image/png, image/gif, image/jpeg">
         </div>
@@ -92,7 +94,7 @@
         <div class="imgControlPanel__background" id="imgControlPanel__background">
           <h3 class="ControlPanel__title">FONDO</h3>
           <div class="imgControlPanel-background__box" id="imgControlPanel-background__box">
-            <input type="color" id="imgControlPanel-background__color" value="#F70094"
+            <input type="color" id="imgControlPanelBackground__color" value="#F70094"
               aria-label="Modificar color de fondo de la imagen">
             <select name="background-imgMeme" class="imgControlPanel-background__comp"
               id="imgControlPanel-background__comp" title="Composición"
@@ -111,7 +113,7 @@
 
         <div class="imgControlPanel__filters" id="imgControlPanel__filters">
           <h3 class="ControlPanel__title">FILTROS</h3>
-          <div class="divFilters">
+          <div class="divFilters" id="divFilters">
             <label for="filters__brightness">BRILLO</label>
             <input type="range" id="filters__brightness" aria-label="Modificar el brillo" min="0" max="1" value="0.5"
               step="0.01">
