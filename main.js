@@ -74,45 +74,19 @@ document.addEventListener("DOMContentLoaded", (e) => {
 // ---------------------------------------------------
 
 // GET HTML ELEMENTS
-
 const imgPanelLiImg = document.getElementById("generalPanelLi__img");
-const imgPanel = document.getElementById("imgPanel");
-const imgPanelTitle = document.getElementById("imgPanel__title");
-
+const imgPanel = document.querySelector(".imgPanel");
 const textPanelLiText = document.getElementById("generalPanelLi__text");
-const textPanel = document.getElementById("textPanel");
-const textPanelTitle = document.getElementById("textPanel__title");
-
+const textPanel = document.querySelector(".textPanel");
 const buttonClose = document.getElementById("buttonClose");
 
-// console.log("imgPanelLiImg element:", imgPanelLiImg);
-// console.log("imgPanel element:", imgPanel);
-// console.log("imgPanelTitle element:", imgPanelTitle);
-// console.log("textPanelLiText element:", textPanelLiText);
-// console.log("textPanel element:", textPanel);
-// console.log("textPanelTitle element:", textPanelTitle);
-// console.log("buttonClose element:", buttonClose);
-
-// MAKE IMG PANEL VISIBLE AND SCROLL UP THE SECTION
-
-const showImgPanel = () => {
-  // console.log("Showing image panel");
-  imgPanel.style.display = "flex";
-  textPanel.style.display = "none";
-  imgPanelTitle.scrollIntoView({
-    behavior: "smooth",
-    block: "center",
-    inline: "nearest",
-  });
-};
-
-// MAKE TEXT PANEL VISIBLE AND SCROLL UP THE SECTION
-
-const showTextPanel = () => {
-  // console.log("Showing text panel");
-  textPanel.style.display = "flex";
-  imgPanel.style.display = "none";
-  textPanelTitle.scrollIntoView({
+// MAKE PANELS VISIBLE AND APPLY STYLES
+const showPanel = (panelToShow, panelToHide) => {
+  panelToShow.style.display = "flex";
+  panelToHide.style.display = "none";
+  panelToShow.classList.add("visible");
+  panelToHide.classList.remove("visible");
+  panelToShow.scrollIntoView({
     behavior: "smooth",
     block: "center",
     inline: "nearest",
@@ -121,23 +95,28 @@ const showTextPanel = () => {
 
 // HIDE PANELS WITH CLOSE BUTTON
 const closePanels = () => {
-  // console.log("Closing panels");
   imgPanel.style.display = "none";
   textPanel.style.display = "none";
+  imgPanel.classList.remove("visible");
+  textPanel.classList.remove("visible");
 };
 
 // DEFAULT STATE
 const setDefaultState = () => {
-  // console.log("Setting default state");
   imgPanel.style.display = "none";
   textPanel.style.display = "none";
   buttonClose.click();
 };
 
 // ASSIGN EVENTS TO CLICKS
+imgPanelLiImg.addEventListener("click", () => {
+  showPanel(imgPanel, textPanel);
+});
 
-imgPanelLiImg.addEventListener("click", showImgPanel);
-textPanelLiText.addEventListener("click", showTextPanel);
+textPanelLiText.addEventListener("click", () => {
+  showPanel(textPanel, imgPanel);
+});
+
 buttonClose.addEventListener("click", closePanels);
 
 setDefaultState();
@@ -399,6 +378,78 @@ document.addEventListener("DOMContentLoaded", () => {
 //--------------------------------------------------
 
 //--------------------------------------------------
+//               PADDING  START <---------
+//--------------------------------------------------
+
+// GET HTML ELEMENTS
+  const updatePadding = () => {
+    const paddingInput = document.getElementById("padding__input");
+    const paddingValue = `${paddingInput.value}px`;
+
+    const memeBoxPreviewP = document.querySelector(".memeBox__preview p");
+    const memeBoxTop = document.getElementById("memeBox__top");
+    const memeBoxBottom = document.getElementById("memeBox__bottom");
+
+    //UPDATE PADDING
+
+    memeBoxPreviewP.style.padding = `0 ${paddingValue}`;
+    memeBoxTop.style.height = `calc(15% + ${paddingValue})`;
+    memeBoxBottom.style.height = `calc(15% + ${paddingValue})`;
+
+    //CENTERS TEXT
+
+    const lineHeight = memeBoxPreviewP.clientHeight;
+    memeBoxTop.style.display = "flex";
+    memeBoxTop.style.alignItems = "center";
+    memeBoxTop.style.justifyContent = "center";
+    memeBoxBottom.style.display = "flex";
+    memeBoxBottom.style.alignItems = "center";
+    memeBoxBottom.style.justifyContent = "center";
+  };
+
+    //APPLY EVENT
+
+  const paddingInput = document.getElementById("padding__input");
+  paddingInput.addEventListener("input", updatePadding);
+
+  
+  updatePadding();
+
+//--------------------------------------------------
+//               PADDING  END <---------
+//--------------------------------------------------
+
+
+//--------------------------------------------------
+//               INTERLINE  START <---------
+//--------------------------------------------------
+
+// GET HTML ELEMENTS
+
+const setInterlineado = () => {
+  const interlineOptions = document.getElementById("interline__options");
+  const interlineValue = interlineOptions.value;
+
+  const memeBoxTopText = document.getElementById("memeBox__topText");
+  const memeBoxBottomText = document.getElementById("memeBox__bottomText");
+
+// UPDATE INTERLINEADO
+
+  memeBoxTopText.style.lineHeight = interlineValue;
+  memeBoxBottomText.style.lineHeight = interlineValue;
+};
+
+// APPLY EVENT
+
+const interlineOptions = document.getElementById("interline__options");
+interlineOptions.addEventListener("change", setInterlineado);
+
+//--------------------------------------------------
+//               INTERLINE  END <---------
+//--------------------------------------------------
+
+
+//--------------------------------------------------
 //               CONTOUR   START <---------
 //--------------------------------------------------
 
@@ -658,7 +709,7 @@ function resetFilter(
 
 buttonResetFilters.addEventListener("click", () => {
   // console.log('Reset Filters Button Clicked');
-  resetFilter(1, 1, 100, 0, 0, 0, 0, 100, 0); // Restablecer los filtros a los valores predeterminados
+  resetFilter(1, 1, 100, 0, 0, 0, 0, 100, 0); 
 });
 
 //  ...................................................
