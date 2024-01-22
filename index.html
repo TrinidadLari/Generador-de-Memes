@@ -15,9 +15,9 @@
 
   <header class="darkHeader" id="darkHeader">
     <h1 class="globalTitle">Generador de Memes</h1>
-    <!-- --------------------------------------------------- -->
+    <!-- ................................................... -->
     <!--  DARK MODE BUTTON // LIGHT MODE BUTTON-->
-    <!-- --------------------------------------------------- -->
+    <!-- ...................................................-->
     <div class="buttonTheme__dark-light" id="buttonTheme__dark-light">
       <button class="buttonDarkTheme" id="buttonDarkTheme" aria-label="Cambiar a modo oscuro">
         <img class="imgButtons" src="./assets/svg/lampOffWhite.svg" alt="cambiar a modo oscuro">Modo oscuro
@@ -28,16 +28,16 @@
     </div>
   </header>
   <main>
-    <!-- --------------------------------------------------- -->
+    <!-- ................................................... -->
     <!--  SECTION TO CREATE THE MEME -->
-    <!-- --------------------------------------------------- -->
+    <!-- ................................................... -->
     <div class="memeBox" id="memeBox">
       <div class="memeBox__preview" id="memeBox__preview">
         <div class="memeBox__top" id="memeBox__top">
           <p class="memeBox__topText" id="memeBox__topText">TEXTO SUPERIOR</p>
         </div>
         <!-- UPLOAD IMAGE FOR MEME -->
-        <div class="imgMeme" src="" alt="" id="imgMeme" aria-label="Imagen del meme" crossorigin="anonymous"></div>
+        <div class="imgMeme" src="" alt="" id="imgMeme"></div>
         <div class="memeBox__bottom" id="memeBox__bottom">
           <p class="memeBox__bottomText" id="memeBox__bottomText">TEXTO INFERIOR</p>
         </div>
@@ -47,16 +47,16 @@
           src="./assets/svg/download.svg" alt="descargar meme"> Descargar meme</button>
     </div>
 
-    <!-- --------------------------------------------------- -->
+    <!-- ................................................... -->
     <!--  ASIDE // CONTROL PANEL -->
-    <!-- --------------------------------------------------- -->
+    <!-- ................................................... -->
 
     <img class="imgZombie" id="imgZombie" src="./assets/jpg/zombie.png" alt="Imagen Zombie">
     <aside class="hiddenPanelAside darkAside" id="hiddenPanelAside">
 
-      <!-- --------------------------------------------------- -->
+      <!-- ................................................... -->
       <!-- NAV GENERAL PANEL -->
-      <!-- --------------------------------------------------- -->
+      <!-- ................................................... -->
 
 
       <nav class="generalPanel__nav darkNav" id="darkNav">
@@ -76,15 +76,15 @@
       </nav>
 
 
-      <!-- ---------------------------------------------------
+      <!-- ...................................................
         PANEL SECTION TO MODIFY IMAGE
-        --------------------------------------------------- -->
+        ................................................... -->
 
       <section class="imgPanel  imgHiddenPanel darkImgPanel" id="imgPanel">
         <h2 class="imgPanel__title" id="imgPanel__title">IMAGEN</h2>
         <div class="imgPanelControl__imgUpload" id="imgPanelControl__imgUpload">
           <label for="imgUpload__url" class="ControlPanel__title">URL</label>
-          <input type="text" class="imgUpload__url" id="imgUpload__url" aria-label="URL de imagen" crossorigin="anonymous">
+          <input type="text" class="imgUpload__url" id="imgUpload__url" aria-label="URL de imagen">
           <label for="imgUpload__pc" class="ControlPanel__title">IMG PC</label>
           <input type="file" name="imgUpload__pc" id="imgUpload__pc" accept="image/png, image/gif, image/jpeg">
         </div>
@@ -115,57 +115,57 @@
           <h3 class="ControlPanel__title">FILTROS</h3>
           <div class="divFilters" id="divFilters">
             <label for="filters__brightness">BRILLO</label>
-            <input type="range" id="filters__brightness" aria-label="Modificar el brillo" min="0" max="1" value="0.5"
-              step="0.01">
+            <input type="range" id="filters__brightness" aria-label="Modificar el brillo" min="0" max="1" value="1"
+              step="0.1">
           </div>
           <div class="divFilters">
             <label for="filters__opacity">TRANSPARENCIA</label>
-            <input type="range" id="filters__opacity" aria-label="Modificar la transparencia" min="0" max="1" value="0"
-              step="0.01">
+            <input type="range" id="filters__opacity" aria-label="Modificar la transparencia" min="0" max="1" value="1"
+              step="0.1">
           </div>
           <div class="divFilters">
             <label for="filters__contrast">CONTRASTE</label>
-            <input type="range" id="filters__contrast" aria-label="Modificar el contraste" min="0" max="1" value="0.5"
-              step="0.01">
+            <input type="range" id="filters__contrast" aria-label="Modificar el contraste" min="100" max="1000" value="100"
+              step="1">
           </div>
           <div class="divFilters">
             <label for="filters__blur">DESENFOQUE</label>
             <input type="range" id="filters__blur" aria-label="Modificar el desenfoque" min="0" max="10" value="0"
-              step="0.01">
-          </div>
-          <div class="divFilters">
-            <label for="filters__grayscale">ESCALA DE GRISES</label>
-            <input type="range" id="filters__grayscale" aria-label="Modificar la escala de grises" min="0" max="1"
-              value="0" step="0.01">
-          </div>
-          <div class="divFilters">
-            <label for="filters__sepia">SEPIA</label>
-            <input type="range" id="filters__sepia" aria-label="Modificar la escala sepia" min="0" max="1" value="0"
-              step="0.01">
-          </div>
-          <div class="divFilters">
-            <label for="filters__tone">TONO</label>
-            <input type="range" id="filters__tone" aria-label="Modificar el tono" min="0" max="360" value="0.5"
               step="0.1">
           </div>
           <div class="divFilters">
+            <label for="filters__grayscale">ESCALA DE GRISES</label>
+            <input type="range" id="filters__grayscale" aria-label="Modificar la escala de grises" min="0" max="100"
+              value="0" step="1">
+          </div>
+          <div class="divFilters">
+            <label for="filters__sepia">SEPIA</label>
+            <input type="range" id="filters__sepia" aria-label="Modificar la escala sepia" min="0" max="100" value="0"
+              step="1">
+          </div>
+          <div class="divFilters">
+            <label for="filters__tone">TONO</label>
+            <input type="range" id="filters__tone" aria-label="Modificar el tono" min="0" max="359" value="0"
+              step="1">
+          </div>
+          <div class="divFilters">
             <label for="filters__saturate">SATURACIÓN</label>
-            <input type="range" id="filters__saturate" aria-label="Modificar la saturación" min="100" max="1000"
-              value="100" step="1">
+            <input type="range" id="filters__saturate" aria-label="Modificar la saturación" min="0" max="200"
+              value="100" step="10">
           </div>
           <div class="divFilters">
             <label for="filters__negative">NEGATIVO</label>
             <input type="range" id="filters__negative" aria-label="transformar imagen en negativo" min="0" max="1"
-              value="0" step="0.01">
+              value="0" step="0.1">
           </div>
         </div>
         <button type="button" class="buttonResetFilters" id="buttonResetFilters">Restablecer Filtros</button>
         <!-- filter: brightness(0.9) opacity(0.9) blur(0.5px) contrast(159%) grayscale(6%) hue-rotate(61deg) sepia(46%) saturate(870%) invert(0.9); -->
       </section>
 
-      <!-- ---------------------------------------------------
+      <!-- ...................................................
         PANEL SECTION TO MODIFY TEXT
-        --------------------------------------------------- -->
+        ................................................... -->
 
       <section class="textPanel textHiddenPanel darkTextPanel" id="textPanel">
         <h2 class="textPanel__title" id="textPanel__title">TEXTO</h2>
