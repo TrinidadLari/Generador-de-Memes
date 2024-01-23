@@ -129,8 +129,8 @@ header {
 .memeBox__preview {
   display: flex;
   flex-direction: column;
-  /* height: 330px;
-  width: 330px; */
+  min-width: 330px;
+  min-height: 330px;
   margin-bottom: 20px;
   box-shadow: var(--shadow1);
   resize: both;
@@ -329,7 +329,7 @@ PANEL SECTION TO MODIFY TEXT
 .topText,
 .bottomText,
 .padding__input {
-  display: flex;
+  display: flex; 
   flex-direction: column;
   height: 30px;
   width: 90%;
@@ -413,13 +413,6 @@ MEDIA QUERYS
 
 
 
-@media (min-width: 600px) {
-  .memeBox__preview {
-    min-width: 330px;
-    min-height: 330px;
-  }
-}
-
 @media (min-width: 1200px) {
   .memeBox__preview {
     max-width: 500px;
@@ -428,7 +421,7 @@ MEDIA QUERYS
 }
 
 
-@media (min-width: 901px) {
+@media (min-width: 1200px) {
   .imgPanel,
   .textPanel {
     position: fixed;

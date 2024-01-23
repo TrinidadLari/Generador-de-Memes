@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="./assets/svg/lol.svg" type="image/x-icon">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous"></script>
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
   <title>Generador de Memes</title>
 </head>
 
@@ -37,7 +36,6 @@
           <p class="memeBox__topText" id="memeBox__topText">TEXTO SUPERIOR</p>
         </div>
         <!-- UPLOAD IMAGE FOR MEME -->
-        <!-- <canvas id="memeCanvas" class="imgMeme" width="100%" height="100%"></canvas> -->
         <div class="imgMeme" src="" alt="" id="imgMeme"></div>
         <div class="memeBox__bottom" id="memeBox__bottom">
           <p class="memeBox__bottomText" id="memeBox__bottomText">TEXTO INFERIOR</p>
@@ -161,7 +159,6 @@
           </div>
         </div>
         <button type="button" class="buttonResetFilters" id="buttonResetFilters">Restablecer Filtros</button>
-        <!-- filter: brightness(0.9) opacity(0.9) blur(0.5px) contrast(159%) grayscale(6%) hue-rotate(61deg) sepia(46%) saturate(870%) invert(0.9); -->
       </section>
 
       <!-- ...................................................
@@ -290,6 +287,7 @@
       </section>
     </aside>
   </main>
+  
   <footer class="darkFooter" id="darkFooter">
     <p>© 2024 Trinidad Sabina Lari</p>
   </footer>

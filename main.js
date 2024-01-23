@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
   // ACTIVATE DARK THEME
 
   const trueDarkMode = () => {
-    // console.log("Activating Dark Mode");
     body.classList.add("darkBody");
     header.classList.add("darkHeader");
     nav.classList.add("darkNav");
@@ -41,7 +40,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
   // DEACTIVATE DARK THEME
 
   const falseDarkMode = () => {
-    // console.log("Deactivating Dark Mode");
     body.classList.remove("darkBody");
     header.classList.remove("darkHeader");
     nav.classList.remove("darkNav");
@@ -300,7 +298,7 @@ const applyFont = (font) => {
 //--------------------------------------------------
 // GET HTML ELEMENTS
 const textSizeInput = document.getElementById("textPanel__size");
-const textAlignLeftButton = document.getElementById("textPanelAlign__left");
+const textAlignLeftButton = document.getElementById("textPanelAlign__left"); 
 const textAlignCenterButton = document.getElementById("textPanelAlign__center");
 const textAlignRightButton = document.getElementById("textPanelAlign__right");
 const memeBox__TopText = document.getElementById("memeBox__topText");
@@ -311,23 +309,24 @@ const applyTextSize = () => {
   const textSize = `${textSizeInput.value}px`;
   memeBox__TopText.style.fontSize = textSize;
   memeBox__BottomText.style.fontSize = textSize;
+
+  
 };
 
 // FUNCTION TO APPLY SELECTED TEXT ALIGNMENT
 const applyTextAlignment = (alignment) => {
   memeBox__TopText.style.textAlign = alignment;
   memeBox__BottomText.style.textAlign = alignment;
+
+
 };
 
 // ADD EVENT LISTENERS
 textSizeInput.addEventListener("input", applyTextSize);
 textAlignLeftButton.addEventListener("click", () => applyTextAlignment("left"));
-textAlignCenterButton.addEventListener("click", () =>
-  applyTextAlignment("center")
-);
-textAlignRightButton.addEventListener("click", () =>
-  applyTextAlignment("right")
-);
+textAlignCenterButton.addEventListener("click", () => applyTextAlignment("center"));
+textAlignRightButton.addEventListener("click", () => applyTextAlignment("right"));
+
 
 //--------------------------------------------------
 //               SIZE AND ALIGN TEXT   END <---------
@@ -395,16 +394,6 @@ document.addEventListener("DOMContentLoaded", () => {
     memeBoxPreviewP.style.padding = `0 ${paddingValue}`;
     memeBoxTop.style.height = `calc(15% + ${paddingValue})`;
     memeBoxBottom.style.height = `calc(15% + ${paddingValue})`;
-
-    //CENTERS TEXT
-
-    const lineHeight = memeBoxPreviewP.clientHeight;
-    memeBoxTop.style.display = "flex";
-    memeBoxTop.style.alignItems = "center";
-    memeBoxTop.style.justifyContent = "center";
-    memeBoxBottom.style.display = "flex";
-    memeBoxBottom.style.alignItems = "center";
-    memeBoxBottom.style.justifyContent = "center";
   };
 
     //APPLY EVENT
@@ -506,15 +495,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
   const imgUploadPc = document.getElementById("imgUpload__pc");
   const imgMeme = document.getElementById("imgMeme");
 
-  // console.log("imgUploadUrl element:", imgUploadUrl);
-  // console.log("imgUploadPc element:", imgUploadPc);
-  // console.log("imgMeme element:", imgMeme);
+
 
   // UPLOAD IMG BY URL
 
   imgUploadUrl.addEventListener("input", (e) => {
     const imgUrl = imgUploadUrl.value;
-    // console.log("Image URL input event. New URL:", imgUrl);
     imgMeme.style.backgroundImage = `url('${imgUrl}')`;
     imgMeme.style.backgroundSize = "cover";
   });
@@ -524,7 +510,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
   imgUploadPc.addEventListener("change", (e) => {
     const file = e.target.files[0];
     const imgUrl = URL.createObjectURL(file);
-    // console.log("Image file selected. File URL:", imgUrl);
     imgMeme.style.backgroundImage = `url('${imgUrl}')`;
     imgMeme.style.backgroundSize = "cover";
   });
@@ -552,8 +537,7 @@ const applyCompositionAndColor = () => {
   const color = colorPicker.value;
   const composition = compositionSelect.value;
 
-  // console.log('Color selected:', color);
-  // console.log('Composition selected:', composition);
+
 
   switch (composition) {
     case "unset":
@@ -592,8 +576,7 @@ const applyCompositionAndColor = () => {
       imgMeme.style.backgroundColor = "transparent";
   }
 
-  // console.log('Filter applied:', imgMeme.style.filter);
-  // console.log('Background color applied:', imgMeme.style.backgroundColor);
+
 };
 
 // ADD CHANGE EVENT LISTENERS TO TRIGGER THE FUNCTION
@@ -708,7 +691,6 @@ function resetFilter(
 }
 
 buttonResetFilters.addEventListener("click", () => {
-  // console.log('Reset Filters Button Clicked');
   resetFilter(1, 1, 100, 0, 0, 0, 0, 100, 0); 
 });
 
@@ -721,6 +703,8 @@ buttonResetFilters.addEventListener("click", () => {
 //--------------------------------------------------
 //          MEME DOWNLOAD BUTTON START <---------
 //--------------------------------------------------
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const buttonDownloadMeme = document.getElementById("buttonDownloadMeme");
 
@@ -729,34 +713,38 @@ document.addEventListener("DOMContentLoaded", () => {
     // GET HTML ELEMENT
     const memeBoxPreview = document.getElementById("memeBox__preview");
 
+    // MANUALLY APPLY STYLES TO TEXT ELEMENTS
+    const textElements = memeBoxPreview.querySelectorAll(".text-element");
+    textElements.forEach((textElement) => {
+      textElement.style.fontFamily = getComputedStyle(textElement).fontFamily;
+      textElement.style.fontSize = getComputedStyle(textElement).fontSize;
+      textElement.style.color = getComputedStyle(textElement).color;
+    });
+
     // CAPTURES THE CONTENT OF THE DIV AS IMG
-    html2canvas(memeBoxPreview, { useCORS: true }).then((canvas) => {
-      // CONVERTS CONTENT TO A BLOB AND ASSIGNS IT A URL
-      canvas
-        .toBlob((blob) => {
-          const url = window.URL.createObjectURL(blob);
+    domtoimage.toBlob(memeBoxPreview).then((blob) => {
+      const url = window.URL.createObjectURL(blob);
 
-          // CREATES TEMPORARY LINK FOR DOWNLOAD
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = "meme.png";
+      // CREATES TEMPORARY LINK FOR DOWNLOAD
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "meme.png";
 
-          // APPLY THE LINK TO THE DOCUMENT
-          document.body.appendChild(a);
+      // APPLY THE LINK TO THE DOCUMENT
+      document.body.appendChild(a);
 
-          a.click();
+      a.click();
 
-          // CLEAN THE LINK
-          document.body.removeChild(a);
-          window.URL.revokeObjectURL(url);
-          // console.log("Download link removed and URL object revoked.");
-        })
-        .then(() => {
-          console.log("Descarga completada");
-          //MISSING TO DO
-        });
+      // CLEAN THE LINK
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+      console.log("Download link removed and URL object revoked.");
+    })
+    .then(() => {
+    })
+    .catch((error) => {
+      console.error("Error during download:", error);
     });
   });
 });
-
 
