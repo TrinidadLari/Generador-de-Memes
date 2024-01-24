@@ -20,6 +20,7 @@
   --shadow2: 0px -3px 8px 2px var(--color4);
   --fontFamily1: 'Nosifer', sans-serif;
   --fontFamily2: 'Jolly Lodger', system-ui;
+  --fontFamily3: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
 }
 
 .darkBody {
@@ -154,19 +155,20 @@ header {
   width: 100%;
   object-fit: cover;
   object-position: center left;
-  /* background-size: contain; */
 }
 
 .memeBox__preview p {
   font-size: larger;
-  font-family: var(--fontFamily2);
+  font-family: var(--fontFamily3);
+  font-weight: 600;
   text-align: center;
  margin-top: 10px;
 }
 
 
 
-.buttonDownloadMeme {
+.buttonDownloadMeme,
+.buttonReloadMeme {
   display: inline-flex;
   flex-direction: row;
   gap: 10px;
@@ -181,14 +183,15 @@ header {
   cursor: pointer;
   background-color: var(--color4);
   color: var(--color100);
+  margin-bottom: 10px;
 }
 
 .imgZombie {
   position: fixed;
   bottom: -20px;
   left: 50%;
-  width: 375px;
-  margin-left: -187.5px;
+  width: 372px;
+  margin-left: -184px;
 }
 
 
@@ -435,15 +438,15 @@ MEDIA QUERYS
     z-index: 1;
   }
 
-  .imgPanel.hide, .textPanel.hide {
+  .imgPanel, .textPanel {
     right: -350;
   }
 
-  .imgPanel.hide {
+  .imgPanel {
     right: 0;
   }
 
-  .textPanel.hide {
+  .textPanel {
     right: 0;
   }
 }

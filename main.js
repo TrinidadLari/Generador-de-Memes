@@ -136,14 +136,12 @@ console.log("imgZombie element:", imgZombie);
 // HIDE AND DISPLAY THE ZOMBIE WITH ONE CLICK
 
 imgZombie.addEventListener("click", (e) => {
-  // console.log("Zombie clicked");
   imgZombie.style.transition =
     "transform 2s ease-in-out, opacity 2s ease-in-out";
   imgZombie.style.transform = "translateY(100%)";
   imgZombie.style.opacity = "0";
 
   setTimeout(() => {
-    // console.log("Zombie animation complete");
     imgZombie.style.transition =
       "transform 2s ease-in-out, opacity 2s ease-in-out";
     imgZombie.style.transform = "translateY(0)";
@@ -168,8 +166,8 @@ imgZombie.addEventListener("click", (e) => {
 // GET HTML ELEMENTS
 
 document.addEventListener("DOMContentLoaded", () => {
-  const topTextInput = document.getElementById("topText");
-  const bottomTextInput = document.getElementById("bottomText");
+  const topText = document.getElementById("topText");
+  const bottomText = document.getElementById("bottomText");
   const noTopTextCheckbox = document.getElementById("noTopText");
   const noBottomTextCheckbox = document.getElementById("noBottomText");
   const memeBoxTop = document.getElementById("memeBox__top");
@@ -181,43 +179,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // STORES ORIGINAL STYLE
 
-  const initialStylesTop = {
+  const originalStylesTop = {
     display: memeBoxTop.style.display,
     height: imgMeme.style.height,
   };
 
-  const initialStylesBottom = {
+  const originalStylesBottom = {
     display: memeBoxBottom.style.display,
     height: imgMeme.style.height,
   };
 
   // EVENTS FOR TOP/BOTTOM TEXT
 
-  topTextInput.addEventListener("input", (e) => {
-    updateText(e, memeBoxTopText);
+  topText.addEventListener("input", () => {
+    updateText(topText.value, memeBoxTopText);
   });
 
-  bottomTextInput.addEventListener("input", (e) => {
-    updateText(e, memeBoxBottomText);
+  bottomText.addEventListener("input", () => {
+    updateText(bottomText.value, memeBoxBottomText);
   });
 
   noTopTextCheckbox.addEventListener("change", () => {
-    toggleTextDisplay(noTopTextCheckbox, memeBoxTop, initialStylesTop);
+    noText(noTopTextCheckbox, memeBoxTop, originalStylesTop);
   });
 
   noBottomTextCheckbox.addEventListener("change", () => {
-    toggleTextDisplay(noBottomTextCheckbox, memeBoxBottom, initialStylesBottom);
+    noText(noBottomTextCheckbox, memeBoxBottom, originalStylesBottom);
   });
 
   //SYNCHRONIZES THE TEXT ENTERED WITH THAT OF THE MEME
 
-  const updateText = (e, outputElement) => {
-    outputElement.textContent = e.target.value;
+  const updateText = (value, outputElement) => {
+    outputElement.textContent = value;
   };
 
   // CHECKBOX TRUE / FALSE
 
-  const toggleTextDisplay = (checkbox, containerElement, initialStyles) => {
+  const noText = (checkbox, containerElement, originalStyles) => {
     if (checkbox.checked) {
       containerElement.style.display = "none";
       memeBoxPreview.style.gridTemplateRows = "70% 15%";
@@ -225,8 +223,8 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Hidden upper text");
     } else {
       containerElement.style.display = "flex";
-      memeBoxPreview.style.gridTemplateRows = initialStyles.gridTemplateRows;
-      imgMeme.style.height = initialStyles.height;
+      memeBoxPreview.style.gridTemplateRows = originalStyles.gridTemplateRows;
+      imgMeme.style.height = originalStyles.height;
       containerElement.style.alignItems = "center";
       containerElement.style.justifyContent = "center";
       console.log("Top text shown");
@@ -235,33 +233,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // DELETES DEFAULT TEXT
 
-  topTextInput.addEventListener("focus", (e) => {
-    clearDefaultText(e, "INGRESAR TEXTO SUPERIOR");
+  topText.addEventListener("focus", () => {
+    clearDefaultText(topText, "INGRESAR TEXTO SUPERIOR");
   });
 
-  bottomTextInput.addEventListener("focus", (e) => {
-    clearDefaultText(e, "INGRESAR TEXTO INFERIOR");
+  bottomText.addEventListener("focus", () => {
+    clearDefaultText(bottomText, "INGRESAR TEXTO INFERIOR");
   });
 
-  const clearDefaultText = (e, defaultText) => {
-    if (e.target.value === defaultText) {
-      e.target.value = "";
+  const clearDefaultText = (inputElement, defaultText) => {
+    if (inputElement.value === defaultText) {
+      inputElement.value = "";
     }
   };
 
   //ENTER NO DEFAULT BEHAVIOR AND REMOVE FOCUS
 
-  topTextInput.addEventListener("keypress", (e) => {
-    handleEnterKey(e, memeBoxTopText);
+  topText.addEventListener("input", () => {
+    handleEnterKey(topText, memeBoxTopText);
   });
 
-  bottomTextInput.addEventListener("keypress", (e) => {
-    handleEnterKey(e, memeBoxBottomText);
+  bottomText.addEventListener("input", () => {
+    handleEnterKey(bottomText, memeBoxBottomText);
   });
 
-  const handleEnterKey = (e, textElement) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
+  const handleEnterKey = (inputElement, textElement) => {
+    if (inputElement.value.includes("\n")) {
+      inputElement.value = inputElement.value.replace("\n", "");
       textElement.blur();
     }
   };
@@ -298,7 +296,7 @@ const applyFont = (font) => {
 //--------------------------------------------------
 // GET HTML ELEMENTS
 const textSizeInput = document.getElementById("textPanel__size");
-const textAlignLeftButton = document.getElementById("textPanelAlign__left"); 
+const textAlignLeftButton = document.getElementById("textPanelAlign__left");
 const textAlignCenterButton = document.getElementById("textPanelAlign__center");
 const textAlignRightButton = document.getElementById("textPanelAlign__right");
 const memeBox__TopText = document.getElementById("memeBox__topText");
@@ -309,24 +307,23 @@ const applyTextSize = () => {
   const textSize = `${textSizeInput.value}px`;
   memeBox__TopText.style.fontSize = textSize;
   memeBox__BottomText.style.fontSize = textSize;
-
-  
 };
 
 // FUNCTION TO APPLY SELECTED TEXT ALIGNMENT
 const applyTextAlignment = (alignment) => {
   memeBox__TopText.style.textAlign = alignment;
   memeBox__BottomText.style.textAlign = alignment;
-
-
 };
 
 // ADD EVENT LISTENERS
 textSizeInput.addEventListener("input", applyTextSize);
 textAlignLeftButton.addEventListener("click", () => applyTextAlignment("left"));
-textAlignCenterButton.addEventListener("click", () => applyTextAlignment("center"));
-textAlignRightButton.addEventListener("click", () => applyTextAlignment("right"));
-
+textAlignCenterButton.addEventListener("click", () =>
+  applyTextAlignment("center")
+);
+textAlignRightButton.addEventListener("click", () =>
+  applyTextAlignment("right")
+);
 
 //--------------------------------------------------
 //               SIZE AND ALIGN TEXT   END <---------
@@ -341,9 +338,6 @@ textAlignRightButton.addEventListener("click", () => applyTextAlignment("right")
 document.addEventListener("DOMContentLoaded", () => {
   const fontColorInput = document.getElementById("color__letter");
   const backgroundColorInput = document.getElementById("color__background");
-  const transparentCheckbox = document.getElementById(
-    "transparent__background"
-  );
   const memeBox__Top = document.getElementById("memeBox__top");
   const memeBox__Bottom = document.getElementById("memeBox__bottom");
 
@@ -370,7 +364,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //BACKGROUND TRANSPARENCY CHECKBOX
 
-//                   MISSING TO DO
+// Get DOM elements
+document.addEventListener("DOMContentLoaded", () => {
+  const checkboxTransparentBackground = document.getElementById(
+    "transparent__background"
+  );
+  const memeBoxTop = document.getElementById("memeBox__top");
+  const memeBoxBottom = document.getElementById("memeBox__bottom");
+  const img_Meme = document.getElementById("imgMeme");
+
+  const applyChanges = () => {
+    const transparentBackground = checkboxTransparentBackground.checked;
+
+    if (transparentBackground) {
+      memeBoxTop.style.backgroundColor = "transparent";
+      memeBoxBottom.style.backgroundColor = "transparent";
+      img_Meme.style.height = "100%";
+    } else {
+      memeBoxTop.style.backgroundColor = "";
+      memeBoxBottom.style.backgroundColor = "";
+      img_Meme.style.height = "";
+    }
+  };
+
+  checkboxTransparentBackground.addEventListener("change", applyChanges);
+});
 
 //--------------------------------------------------
 //               COLOR AND BACKGROUND   END <---------
@@ -381,33 +399,31 @@ document.addEventListener("DOMContentLoaded", () => {
 //--------------------------------------------------
 
 // GET HTML ELEMENTS
-  const updatePadding = () => {
-    const paddingInput = document.getElementById("padding__input");
-    const paddingValue = `${paddingInput.value}px`;
-
-    const memeBoxPreviewP = document.querySelector(".memeBox__preview p");
-    const memeBoxTop = document.getElementById("memeBox__top");
-    const memeBoxBottom = document.getElementById("memeBox__bottom");
-
-    //UPDATE PADDING
-
-    memeBoxPreviewP.style.padding = `0 ${paddingValue}`;
-    memeBoxTop.style.height = `calc(15% + ${paddingValue})`;
-    memeBoxBottom.style.height = `calc(15% + ${paddingValue})`;
-  };
-
-    //APPLY EVENT
-
+const updatePadding = () => {
   const paddingInput = document.getElementById("padding__input");
-  paddingInput.addEventListener("input", updatePadding);
+  const paddingValue = `${paddingInput.value}px`;
 
-  
-  updatePadding();
+  const memeBoxPreviewText = document.querySelector(".memeBox__preview p");
+  const memeBoxTop = document.getElementById("memeBox__top");
+  const memeBoxBottom = document.getElementById("memeBox__bottom");
+
+  //UPDATE PADDING
+
+  memeBoxPreviewText.style.padding = `0 ${paddingValue}`;
+  memeBoxTop.style.height = `calc(15% + ${paddingValue})`;
+  memeBoxBottom.style.height = `calc(15% + ${paddingValue})`;
+};
+
+//APPLY EVENT
+
+const paddingInput = document.getElementById("padding__input");
+paddingInput.addEventListener("input", updatePadding);
+
+updatePadding();
 
 //--------------------------------------------------
 //               PADDING  END <---------
 //--------------------------------------------------
-
 
 //--------------------------------------------------
 //               INTERLINE  START <---------
@@ -422,7 +438,7 @@ const setInterlineado = () => {
   const memeBoxTopText = document.getElementById("memeBox__topText");
   const memeBoxBottomText = document.getElementById("memeBox__bottomText");
 
-// UPDATE INTERLINEADO
+  // UPDATE INTERLINEADO
 
   memeBoxTopText.style.lineHeight = interlineValue;
   memeBoxBottomText.style.lineHeight = interlineValue;
@@ -436,7 +452,6 @@ interlineOptions.addEventListener("change", setInterlineado);
 //--------------------------------------------------
 //               INTERLINE  END <---------
 //--------------------------------------------------
-
 
 //--------------------------------------------------
 //               CONTOUR   START <---------
@@ -459,14 +474,14 @@ const applyNoContour = () => {
 
 //WHITE
 const applyWhiteContour = () => {
-  boxTopText.style.textShadow = "1px 1px 2px white, -1px -1px 2px white";
-  boxBottomText.style.textShadow = "1px 1px 2px white, -1px -1px 2px white";
+  boxTopText.style.textShadow = "1px 1px 2px white";
+  boxBottomText.style.textShadow = "1px 1px 2px white";
 };
 
 //BLACK
 const applyBlackContour = () => {
-  boxTopText.style.textShadow = "1px 1px 2px black, -1px -1px 2px black";
-  boxBottomText.style.textShadow = "1px 1px 2px black, -1px -1px 2px black";
+  boxTopText.style.textShadow = "1px 1px 2px black";
+  boxBottomText.style.textShadow = "1px 1px 2px black";
 };
 
 // APPLY EVENTS
@@ -494,8 +509,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
   const imgUploadUrl = document.getElementById("imgUpload__url");
   const imgUploadPc = document.getElementById("imgUpload__pc");
   const imgMeme = document.getElementById("imgMeme");
-
-
 
   // UPLOAD IMG BY URL
 
@@ -537,8 +550,6 @@ const applyCompositionAndColor = () => {
   const color = colorPicker.value;
   const composition = compositionSelect.value;
 
-
-
   switch (composition) {
     case "unset":
       // Original
@@ -575,11 +586,9 @@ const applyCompositionAndColor = () => {
       imgMeme.style.filter = "none";
       imgMeme.style.backgroundColor = "transparent";
   }
-
-
 };
 
-// ADD CHANGE EVENT LISTENERS TO TRIGGER THE FUNCTION
+// APPLY FUNCTION
 
 colorPicker.addEventListener("input", applyCompositionAndColor);
 compositionSelect.addEventListener("change", applyCompositionAndColor);
@@ -602,7 +611,7 @@ const filtersNegative = document.getElementById("filters__negative");
 const buttonResetFilters = document.getElementById("buttonResetFilters");
 const img__Meme = document.getElementById("imgMeme");
 
-//ADD EVENT INPUT TO FILTERS
+// ADD EVENT INPUT TO FILTERS
 
 filtersBrightness.addEventListener("input", getFilterValue);
 filtersOpacity.addEventListener("input", getFilterValue);
@@ -614,7 +623,7 @@ filtersTone.addEventListener("input", getFilterValue);
 filtersSaturate.addEventListener("input", getFilterValue);
 filtersNegative.addEventListener("input", getFilterValue);
 
-//DEFAULT VALUES
+// DEFAULT VALUES
 
 buttonResetFilters.addEventListener("click", () => {
   const brightness = 1;
@@ -637,6 +646,17 @@ buttonResetFilters.addEventListener("click", () => {
     saturate,
     negative
   );
+
+  // SET THE VALUES OF THE SLIDERS AFTER RESETTING
+  filtersBrightness.value = brightness;
+  filtersOpacity.value = opacity;
+  filtersContrast.value = contrast;
+  filtersBlur.value = blur;
+  filtersGrayscale.value = grayscale;
+  filtersSepia.value = sepia;
+  filtersTone.value = tone;
+  filtersSaturate.value = saturate;
+  filtersNegative.value = negative;
 });
 
 // FUNCTION TO APPLY SELECTED FILTERS
@@ -687,13 +707,12 @@ function resetFilter(
 
   const filterValue = `${brightness} ${opacity} ${contrast} ${blur} ${grayscale} ${sepia} ${hueRotate} ${saturate} ${invert}`;
 
-  imgMeme.style.filter = filterValue;
+  img__Meme.style.filter = filterValue;
 }
 
 buttonResetFilters.addEventListener("click", () => {
-  resetFilter(1, 1, 100, 0, 0, 0, 0, 100, 0); 
+  resetFilter(1, 1, 100, 0, 0, 0, 0, 100, 0);
 });
-
 //  ...................................................
 // DOWNLOAD MEME
 // DOWNLOAD MEME
@@ -704,13 +723,11 @@ buttonResetFilters.addEventListener("click", () => {
 //          MEME DOWNLOAD BUTTON START <---------
 //--------------------------------------------------
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const buttonDownloadMeme = document.getElementById("buttonDownloadMeme");
 
   // ADD BUTTON CLICK EVENT
   buttonDownloadMeme.addEventListener("click", () => {
-    // GET HTML ELEMENT
     const memeBoxPreview = document.getElementById("memeBox__preview");
 
     // MANUALLY APPLY STYLES TO TEXT ELEMENTS
@@ -722,29 +739,48 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // CAPTURES THE CONTENT OF THE DIV AS IMG
-    domtoimage.toBlob(memeBoxPreview).then((blob) => {
-      const url = window.URL.createObjectURL(blob);
+    domtoimage
+      .toBlob(memeBoxPreview)
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
 
-      // CREATES TEMPORARY LINK FOR DOWNLOAD
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "meme.png";
+        // CREATES TEMPORARY LINK FOR DOWNLOAD
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "meme.png";
 
-      // APPLY THE LINK TO THE DOCUMENT
-      document.body.appendChild(a);
+        // APPLY THE LINK TO THE DOCUMENT
+        document.body.appendChild(a);
 
-      a.click();
+        a.click();
 
-      // CLEAN THE LINK
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-      console.log("Download link removed and URL object revoked.");
-    })
-    .then(() => {
-    })
-    .catch((error) => {
-      console.error("Error during download:", error);
-    });
+        // CLEAN THE LINK
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      })
+      .then(() => {})
+      .catch((error) => {
+        console.error("Error en la descarga:", error);
+      });
   });
 });
 
+//--------------------------------------------------
+//          MEME DOWNLOAD BUTTON END <---------
+//--------------------------------------------------
+
+//--------------------------------------------------
+//           RELOAD BUTTON START <---------
+//--------------------------------------------------
+
+const reloadPage = () => {
+  location.reload();
+};
+
+const buttonReloadMeme = document.getElementById("buttonReloadMeme");
+
+buttonReloadMeme.addEventListener("click", reloadPage);
+
+//--------------------------------------------------
+//           RELOAD BUTTON END <---------
+//--------------------------------------------------

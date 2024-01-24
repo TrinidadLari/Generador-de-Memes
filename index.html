@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Trinidad Sabina Lari">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="./assets/svg/lol.svg" type="image/x-icon">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
@@ -32,25 +33,28 @@
     <!-- ................................................... -->
     <div class="memeBox" id="memeBox">
       <div class="memeBox__preview" id="memeBox__preview">
-        <div class="memeBox__top" id="memeBox__top">
+        <div class="memeBox__top boxText" id="memeBox__top">
           <p class="memeBox__topText" id="memeBox__topText">TEXTO SUPERIOR</p>
         </div>
         <!-- UPLOAD IMAGE FOR MEME -->
         <div class="imgMeme" src="" alt="" id="imgMeme"></div>
-        <div class="memeBox__bottom" id="memeBox__bottom">
+        <div class="memeBox__bottom  boxText" id="memeBox__bottom">
           <p class="memeBox__bottomText" id="memeBox__bottomText">TEXTO INFERIOR</p>
         </div>
       </div>
       <!-- DOWNLOAD BUTTON -->
       <button type="button" class="buttonDownloadMeme" id="buttonDownloadMeme"> <img class="imgButtons"
           src="./assets/svg/download.svg" alt="descargar meme"> Descargar meme</button>
+          
+      <button type="button" class="buttonReloadMeme" id="buttonReloadMeme"> <img class="imgButtons"
+            src="./assets/svg/reload.svg" alt="Restablecer página"> Restablecer </button>
     </div>
 
     <!-- ................................................... -->
     <!--  ASIDE // CONTROL PANEL -->
     <!-- ................................................... -->
 
-    <img class="imgZombie" id="imgZombie" src="./assets/jpg/zombie.png" alt="Imagen Zombie">
+    <img class="imgZombie" id="imgZombie" src="./assets/png/zombie.png" alt="Imagen Zombie">
     <aside class="hiddenPanelAside darkAside" id="hiddenPanelAside">
 
       <!-- ................................................... -->
@@ -171,7 +175,6 @@
           <h3 class="ControlPanel__title">SUPERIOR</h3>
           <textarea name="topText" class="topText" id="topText" cols="22" rows="1"
             aria-label="ingresar texto superior">INGRESAR TEXTO SUPERIOR</textarea>
-          <!-- %&%&%$%&$ agregar atributo resize en CSS &%$&%$&%$&%$ -->
           <input type="checkbox" name="noTopText" id="noTopText" aria-label="quitar texto superior">
           <label for="noTopText">Quitar texto superior</label>
         </div>
@@ -179,7 +182,6 @@
           <h3 class="ControlPanel__title">INFERIOR</h3>
           <textarea name="bottomText" class="bottomText" id="bottomText" cols="22" rows="1"
             aria-label="ingresar texto inferior">INGRESAR TEXTO INFERIOR</textarea>
-          <!-- %&%&%$%&$ agregar atributo resize en CSS &%$&%$&%$&%$ -->
           <input type="checkbox" name="noBottomText" id="noBottomText" aria-label="quitar texto superior">
           <label for="noBottomText">Quitar texto inferior</label>
         </div>
