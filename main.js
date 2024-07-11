@@ -11,56 +11,56 @@
 // GET HTML ELEMENTS
 
 document.addEventListener("DOMContentLoaded", (e) => {
-  const buttonDarkTheme = document.getElementById("buttonDarkTheme");
-  const buttonLightTheme = document.getElementById("buttonLightTheme");
-  const body = document.body;
-  const header = document.getElementById("darkHeader");
-  const nav = document.getElementById("darkNav");
-  const imgPanel = document.getElementById("imgPanel");
-  const textPanel = document.getElementById("textPanel");
+	const buttonDarkTheme = document.getElementById("buttonDarkTheme");
+	const buttonLightTheme = document.getElementById("buttonLightTheme");
+	const body = document.body;
+	const header = document.getElementById("darkHeader");
+	const nav = document.getElementById("darkNav");
+	const imgPanel = document.getElementById("imgPanel");
+	const textPanel = document.getElementById("textPanel");
 
-  // CHECK IF DARK THEME IS ACTIVE
+	// CHECK IF DARK THEME IS ACTIVE
 
-  const isDarkMode = localStorage.getItem("darkMode") === "true";
+	const isDarkMode = localStorage.getItem("darkMode") === "true";
 
-  // ACTIVATE DARK THEME
+	// ACTIVATE DARK THEME
 
-  const trueDarkMode = () => {
-    body.classList.add("darkBody");
-    header.classList.add("darkHeader");
-    nav.classList.add("darkNav");
-    imgPanel.classList.add("darkImgPanel");
-    textPanel.classList.add("darkTextPanel");
-    buttonDarkTheme.style.display = "none";
-    buttonLightTheme.style.display = "inline-flex";
+	const trueDarkMode = () => {
+		body.classList.add("darkBody");
+		header.classList.add("darkHeader");
+		nav.classList.add("darkNav");
+		imgPanel.classList.add("darkImgPanel");
+		textPanel.classList.add("darkTextPanel");
+		buttonDarkTheme.style.display = "none";
+		buttonLightTheme.style.display = "inline-flex";
 
-    localStorage.setItem("darkMode", "true");
-  };
+		localStorage.setItem("darkMode", "true");
+	};
 
-  // DEACTIVATE DARK THEME
+	// DEACTIVATE DARK THEME
 
-  const falseDarkMode = () => {
-    body.classList.remove("darkBody");
-    header.classList.remove("darkHeader");
-    nav.classList.remove("darkNav");
-    imgPanel.classList.remove("darkImgPanel");
-    textPanel.classList.remove("darkTextPanel");
-    buttonLightTheme.style.display = "none";
-    buttonDarkTheme.style.display = "inline-flex";
+	const falseDarkMode = () => {
+		body.classList.remove("darkBody");
+		header.classList.remove("darkHeader");
+		nav.classList.remove("darkNav");
+		imgPanel.classList.remove("darkImgPanel");
+		textPanel.classList.remove("darkTextPanel");
+		buttonLightTheme.style.display = "none";
+		buttonDarkTheme.style.display = "inline-flex";
 
-    localStorage.setItem("darkMode", null);
-  };
+		localStorage.setItem("darkMode", null);
+	};
 
-  // ASSIGN EVENTS TO BOTTONS
+	// ASSIGN EVENTS TO BOTTONS
 
-  buttonDarkTheme.addEventListener("click", trueDarkMode);
-  buttonLightTheme.addEventListener("click", falseDarkMode);
+	buttonDarkTheme.addEventListener("click", trueDarkMode);
+	buttonLightTheme.addEventListener("click", falseDarkMode);
 
-  if (isDarkMode) {
-    trueDarkMode();
-  } else {
-    falseDarkMode();
-  }
+	if (isDarkMode) {
+		trueDarkMode();
+	} else {
+		falseDarkMode();
+	}
 });
 
 /* <!-- --------------------------------------------------- -->
@@ -80,39 +80,39 @@ const buttonClose = document.getElementById("buttonClose");
 
 // MAKE PANELS VISIBLE AND APPLY STYLES
 const showPanel = (panelToShow, panelToHide) => {
-  panelToShow.style.display = "flex";
-  panelToHide.style.display = "none";
-  panelToShow.classList.add("visible");
-  panelToHide.classList.remove("visible");
-  panelToShow.scrollIntoView({
-    behavior: "smooth",
-    block: "center",
-    inline: "nearest",
-  });
+	panelToShow.style.display = "flex";
+	panelToHide.style.display = "none";
+	panelToShow.classList.add("visible");
+	panelToHide.classList.remove("visible");
+	panelToShow.scrollIntoView({
+		behavior: "smooth",
+		block: "start",
+		inline: "nearest",
+	});
 };
 
 // HIDE PANELS WITH CLOSE BUTTON
 const closePanels = () => {
-  imgPanel.style.display = "none";
-  textPanel.style.display = "none";
-  imgPanel.classList.remove("visible");
-  textPanel.classList.remove("visible");
+	imgPanel.style.display = "none";
+	textPanel.style.display = "none";
+	imgPanel.classList.remove("visible");
+	textPanel.classList.remove("visible");
 };
 
 // DEFAULT STATE
 const setDefaultState = () => {
-  imgPanel.style.display = "none";
-  textPanel.style.display = "none";
-  buttonClose.click();
+	imgPanel.style.display = "none";
+	textPanel.style.display = "none";
+	buttonClose.click();
 };
 
 // ASSIGN EVENTS TO CLICKS
 imgPanelLiImg.addEventListener("click", () => {
-  showPanel(imgPanel, textPanel);
+	showPanel(imgPanel, textPanel);
 });
 
 textPanelLiText.addEventListener("click", () => {
-  showPanel(textPanel, imgPanel);
+	showPanel(textPanel, imgPanel);
 });
 
 buttonClose.addEventListener("click", closePanels);
@@ -136,17 +136,17 @@ console.log("imgZombie element:", imgZombie);
 // HIDE AND DISPLAY THE ZOMBIE WITH ONE CLICK
 
 imgZombie.addEventListener("click", (e) => {
-  imgZombie.style.transition =
-    "transform 2s ease-in-out, opacity 2s ease-in-out";
-  imgZombie.style.transform = "translateY(100%)";
-  imgZombie.style.opacity = "0";
+	imgZombie.style.transition =
+		"transform 2s ease-in-out, opacity 2s ease-in-out";
+	imgZombie.style.transform = "translateY(100%)";
+	imgZombie.style.opacity = "0";
 
-  setTimeout(() => {
-    imgZombie.style.transition =
-      "transform 2s ease-in-out, opacity 2s ease-in-out";
-    imgZombie.style.transform = "translateY(0)";
-    imgZombie.style.opacity = "1";
-  }, 2000);
+	setTimeout(() => {
+		imgZombie.style.transition =
+			"transform 2s ease-in-out, opacity 2s ease-in-out";
+		imgZombie.style.transform = "translateY(0)";
+		imgZombie.style.opacity = "1";
+	}, 2000);
 });
 
 //--------------------------------------------------
@@ -166,103 +166,103 @@ imgZombie.addEventListener("click", (e) => {
 // GET HTML ELEMENTS
 
 document.addEventListener("DOMContentLoaded", () => {
-  const topText = document.getElementById("topText");
-  const bottomText = document.getElementById("bottomText");
-  const noTopTextCheckbox = document.getElementById("noTopText");
-  const noBottomTextCheckbox = document.getElementById("noBottomText");
-  const memeBoxTop = document.getElementById("memeBox__top");
-  const memeBoxBottom = document.getElementById("memeBox__bottom");
-  const memeBoxPreview = document.getElementById("memeBox__preview");
-  const imgMeme = document.getElementById("imgMeme");
-  const memeBoxTopText = document.getElementById("memeBox__topText");
-  const memeBoxBottomText = document.getElementById("memeBox__bottomText");
+	const topText = document.getElementById("topText");
+	const bottomText = document.getElementById("bottomText");
+	const noTopTextCheckbox = document.getElementById("noTopText");
+	const noBottomTextCheckbox = document.getElementById("noBottomText");
+	const memeBoxTop = document.getElementById("memeBox__top");
+	const memeBoxBottom = document.getElementById("memeBox__bottom");
+	const memeBoxPreview = document.getElementById("memeBox__preview");
+	const imgMeme = document.getElementById("imgMeme");
+	const memeBoxTopText = document.getElementById("memeBox__topText");
+	const memeBoxBottomText = document.getElementById("memeBox__bottomText");
 
-  // STORES ORIGINAL STYLE
+	// STORES ORIGINAL STYLE
 
-  const originalStylesTop = {
-    display: memeBoxTop.style.display,
-    height: imgMeme.style.height,
-  };
+	const originalStylesTop = {
+		display: memeBoxTop.style.display,
+		height: imgMeme.style.height,
+	};
 
-  const originalStylesBottom = {
-    display: memeBoxBottom.style.display,
-    height: imgMeme.style.height,
-  };
+	const originalStylesBottom = {
+		display: memeBoxBottom.style.display,
+		height: imgMeme.style.height,
+	};
 
-  // EVENTS FOR TOP/BOTTOM TEXT
+	// EVENTS FOR TOP/BOTTOM TEXT
 
-  topText.addEventListener("input", () => {
-    updateText(topText.value, memeBoxTopText);
-  });
+	topText.addEventListener("input", () => {
+		updateText(topText.value, memeBoxTopText);
+	});
 
-  bottomText.addEventListener("input", () => {
-    updateText(bottomText.value, memeBoxBottomText);
-  });
+	bottomText.addEventListener("input", () => {
+		updateText(bottomText.value, memeBoxBottomText);
+	});
 
-  noTopTextCheckbox.addEventListener("change", () => {
-    noText(noTopTextCheckbox, memeBoxTop, originalStylesTop);
-  });
+	noTopTextCheckbox.addEventListener("change", () => {
+		noText(noTopTextCheckbox, memeBoxTop, originalStylesTop);
+	});
 
-  noBottomTextCheckbox.addEventListener("change", () => {
-    noText(noBottomTextCheckbox, memeBoxBottom, originalStylesBottom);
-  });
+	noBottomTextCheckbox.addEventListener("change", () => {
+		noText(noBottomTextCheckbox, memeBoxBottom, originalStylesBottom);
+	});
 
-  //SYNCHRONIZES THE TEXT ENTERED WITH THAT OF THE MEME
+	//SYNCHRONIZES THE TEXT ENTERED WITH THAT OF THE MEME
 
-  const updateText = (value, outputElement) => {
-    outputElement.textContent = value;
-  };
+	const updateText = (value, outputElement) => {
+		outputElement.textContent = value;
+	};
 
-  // CHECKBOX TRUE / FALSE
+	// CHECKBOX TRUE / FALSE
 
-  const noText = (checkbox, containerElement, originalStyles) => {
-    if (checkbox.checked) {
-      containerElement.style.display = "none";
-      memeBoxPreview.style.gridTemplateRows = "70% 15%";
-      imgMeme.style.height = "100%";
-      console.log("Hidden upper text");
-    } else {
-      containerElement.style.display = "flex";
-      memeBoxPreview.style.gridTemplateRows = originalStyles.gridTemplateRows;
-      imgMeme.style.height = originalStyles.height;
-      containerElement.style.alignItems = "center";
-      containerElement.style.justifyContent = "center";
-      console.log("Top text shown");
-    }
-  };
+	const noText = (checkbox, containerElement, originalStyles) => {
+		if (checkbox.checked) {
+			containerElement.style.display = "none";
+			memeBoxPreview.style.gridTemplateRows = "70% 15%";
+			imgMeme.style.height = "100%";
+			console.log("Hidden upper text");
+		} else {
+			containerElement.style.display = "flex";
+			memeBoxPreview.style.gridTemplateRows = originalStyles.gridTemplateRows;
+			imgMeme.style.height = originalStyles.height;
+			containerElement.style.alignItems = "center";
+			containerElement.style.justifyContent = "center";
+			console.log("Top text shown");
+		}
+	};
 
-  // DELETES DEFAULT TEXT
+	// DELETES DEFAULT TEXT
 
-  topText.addEventListener("focus", () => {
-    clearDefaultText(topText, "INGRESAR TEXTO SUPERIOR");
-  });
+	topText.addEventListener("focus", () => {
+		clearDefaultText(topText, "INGRESAR TEXTO SUPERIOR");
+	});
 
-  bottomText.addEventListener("focus", () => {
-    clearDefaultText(bottomText, "INGRESAR TEXTO INFERIOR");
-  });
+	bottomText.addEventListener("focus", () => {
+		clearDefaultText(bottomText, "INGRESAR TEXTO INFERIOR");
+	});
 
-  const clearDefaultText = (inputElement, defaultText) => {
-    if (inputElement.value === defaultText) {
-      inputElement.value = "";
-    }
-  };
+	const clearDefaultText = (inputElement, defaultText) => {
+		if (inputElement.value === defaultText) {
+			inputElement.value = "";
+		}
+	};
 
-  //ENTER NO DEFAULT BEHAVIOR AND REMOVE FOCUS
+	//ENTER NO DEFAULT BEHAVIOR AND REMOVE FOCUS
 
-  topText.addEventListener("input", () => {
-    handleEnterKey(topText, memeBoxTopText);
-  });
+	topText.addEventListener("input", () => {
+		handleEnterKey(topText, memeBoxTopText);
+	});
 
-  bottomText.addEventListener("input", () => {
-    handleEnterKey(bottomText, memeBoxBottomText);
-  });
+	bottomText.addEventListener("input", () => {
+		handleEnterKey(bottomText, memeBoxBottomText);
+	});
 
-  const handleEnterKey = (inputElement, textElement) => {
-    if (inputElement.value.includes("\n")) {
-      inputElement.value = inputElement.value.replace("\n", "");
-      textElement.blur();
-    }
-  };
+	const handleEnterKey = (inputElement, textElement) => {
+		if (inputElement.value.includes("\n")) {
+			inputElement.value = inputElement.value.replace("\n", "");
+			textElement.blur();
+		}
+	};
 });
 
 //--------------------------------------------------
@@ -278,13 +278,13 @@ const memeBoxTopText = document.getElementById("memeBox__topText");
 const memeBoxBottomText = document.getElementById("memeBox__bottomText");
 
 textFontSelect.addEventListener("change", () => {
-  const selectedFont = textFontSelect.value;
-  applyFont(selectedFont);
+	const selectedFont = textFontSelect.value;
+	applyFont(selectedFont);
 });
 
 const applyFont = (font) => {
-  memeBoxTopText.style.fontFamily = font;
-  memeBoxBottomText.style.fontFamily = font;
+	memeBoxTopText.style.fontFamily = font;
+	memeBoxBottomText.style.fontFamily = font;
 };
 
 //--------------------------------------------------
@@ -304,25 +304,25 @@ const memeBox__BottomText = document.getElementById("memeBox__bottomText");
 
 // FUNCTION TO APPLY SELECTED TEXT SIZE
 const applyTextSize = () => {
-  const textSize = `${textSizeInput.value}px`;
-  memeBox__TopText.style.fontSize = textSize;
-  memeBox__BottomText.style.fontSize = textSize;
+	const textSize = `${textSizeInput.value}px`;
+	memeBox__TopText.style.fontSize = textSize;
+	memeBox__BottomText.style.fontSize = textSize;
 };
 
 // FUNCTION TO APPLY SELECTED TEXT ALIGNMENT
 const applyTextAlignment = (alignment) => {
-  memeBox__TopText.style.textAlign = alignment;
-  memeBox__BottomText.style.textAlign = alignment;
+	memeBox__TopText.style.textAlign = alignment;
+	memeBox__BottomText.style.textAlign = alignment;
 };
 
 // ADD EVENT LISTENERS
 textSizeInput.addEventListener("input", applyTextSize);
 textAlignLeftButton.addEventListener("click", () => applyTextAlignment("left"));
 textAlignCenterButton.addEventListener("click", () =>
-  applyTextAlignment("center")
+	applyTextAlignment("center")
 );
 textAlignRightButton.addEventListener("click", () =>
-  applyTextAlignment("right")
+	applyTextAlignment("right")
 );
 
 //--------------------------------------------------
@@ -336,58 +336,58 @@ textAlignRightButton.addEventListener("click", () =>
 // GET HTML ELEMENTS
 
 document.addEventListener("DOMContentLoaded", () => {
-  const fontColorInput = document.getElementById("color__letter");
-  const backgroundColorInput = document.getElementById("color__background");
-  const memeBox__Top = document.getElementById("memeBox__top");
-  const memeBox__Bottom = document.getElementById("memeBox__bottom");
+	const fontColorInput = document.getElementById("color__letter");
+	const backgroundColorInput = document.getElementById("color__background");
+	const memeBox__Top = document.getElementById("memeBox__top");
+	const memeBox__Bottom = document.getElementById("memeBox__bottom");
 
-  // APPLY FONT COLOR
+	// APPLY FONT COLOR
 
-  const applyFontColor = () => {
-    const fontColor = fontColorInput.value;
-    memeBox__TopText.style.color = fontColor;
-    memeBox__BottomText.style.color = fontColor;
-  };
+	const applyFontColor = () => {
+		const fontColor = fontColorInput.value;
+		memeBox__TopText.style.color = fontColor;
+		memeBox__BottomText.style.color = fontColor;
+	};
 
-  fontColorInput.addEventListener("input", applyFontColor);
+	fontColorInput.addEventListener("input", applyFontColor);
 
-  // APPLY BACKGROUND COLOR
+	// APPLY BACKGROUND COLOR
 
-  const applyBackgroundColor = () => {
-    const backgroundColor = backgroundColorInput.value;
-    memeBox__Top.style.backgroundColor = backgroundColor;
-    memeBox__Bottom.style.backgroundColor = backgroundColor;
-  };
+	const applyBackgroundColor = () => {
+		const backgroundColor = backgroundColorInput.value;
+		memeBox__Top.style.backgroundColor = backgroundColor;
+		memeBox__Bottom.style.backgroundColor = backgroundColor;
+	};
 
-  backgroundColorInput.addEventListener("input", applyBackgroundColor);
+	backgroundColorInput.addEventListener("input", applyBackgroundColor);
 });
 
 //BACKGROUND TRANSPARENCY CHECKBOX
 
 // Get DOM elements
 document.addEventListener("DOMContentLoaded", () => {
-  const checkboxTransparentBackground = document.getElementById(
-    "transparent__background"
-  );
-  const memeBoxTop = document.getElementById("memeBox__top");
-  const memeBoxBottom = document.getElementById("memeBox__bottom");
-  const img_Meme = document.getElementById("imgMeme");
+	const checkboxTransparentBackground = document.getElementById(
+		"transparent__background"
+	);
+	const memeBoxTop = document.getElementById("memeBox__top");
+	const memeBoxBottom = document.getElementById("memeBox__bottom");
+	const img_Meme = document.getElementById("imgMeme");
 
-  const applyChanges = () => {
-    const transparentBackground = checkboxTransparentBackground.checked;
+	const applyChanges = () => {
+		const transparentBackground = checkboxTransparentBackground.checked;
 
-    if (transparentBackground) {
-      memeBoxTop.style.backgroundColor = "transparent";
-      memeBoxBottom.style.backgroundColor = "transparent";
-      img_Meme.style.height = "100%";
-    } else {
-      memeBoxTop.style.backgroundColor = "";
-      memeBoxBottom.style.backgroundColor = "";
-      img_Meme.style.height = "";
-    }
-  };
+		if (transparentBackground) {
+			memeBoxTop.style.backgroundColor = "transparent";
+			memeBoxBottom.style.backgroundColor = "transparent";
+			img_Meme.style.height = "100%";
+		} else {
+			memeBoxTop.style.backgroundColor = "";
+			memeBoxBottom.style.backgroundColor = "";
+			img_Meme.style.height = "";
+		}
+	};
 
-  checkboxTransparentBackground.addEventListener("change", applyChanges);
+	checkboxTransparentBackground.addEventListener("change", applyChanges);
 });
 
 //--------------------------------------------------
@@ -400,18 +400,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // GET HTML ELEMENTS
 const updatePadding = () => {
-  const paddingInput = document.getElementById("padding__input");
-  const paddingValue = `${paddingInput.value}px`;
+	const paddingInput = document.getElementById("padding__input");
+	const paddingValue = `${paddingInput.value}px`;
 
-  const memeBoxPreviewText = document.querySelector(".memeBox__preview p");
-  const memeBoxTop = document.getElementById("memeBox__top");
-  const memeBoxBottom = document.getElementById("memeBox__bottom");
+	const memeBoxPreviewText = document.querySelector(".memeBox__preview p");
+	const memeBoxTop = document.getElementById("memeBox__top");
+	const memeBoxBottom = document.getElementById("memeBox__bottom");
 
-  //UPDATE PADDING
+	//UPDATE PADDING
 
-  memeBoxPreviewText.style.padding = `0 ${paddingValue}`;
-  memeBoxTop.style.height = `calc(15% + ${paddingValue})`;
-  memeBoxBottom.style.height = `calc(15% + ${paddingValue})`;
+	memeBoxPreviewText.style.padding = `0 ${paddingValue}`;
+	memeBoxTop.style.height = `calc(15% + ${paddingValue})`;
+	memeBoxBottom.style.height = `calc(15% + ${paddingValue})`;
 };
 
 //APPLY EVENT
@@ -432,16 +432,16 @@ updatePadding();
 // GET HTML ELEMENTS
 
 const setInterlineado = () => {
-  const interlineOptions = document.getElementById("interline__options");
-  const interlineValue = interlineOptions.value;
+	const interlineOptions = document.getElementById("interline__options");
+	const interlineValue = interlineOptions.value;
 
-  const memeBoxTopText = document.getElementById("memeBox__topText");
-  const memeBoxBottomText = document.getElementById("memeBox__bottomText");
+	const memeBoxTopText = document.getElementById("memeBox__topText");
+	const memeBoxBottomText = document.getElementById("memeBox__bottomText");
 
-  // UPDATE INTERLINEADO
+	// UPDATE INTERLINEADO
 
-  memeBoxTopText.style.lineHeight = interlineValue;
-  memeBoxBottomText.style.lineHeight = interlineValue;
+	memeBoxTopText.style.lineHeight = interlineValue;
+	memeBoxBottomText.style.lineHeight = interlineValue;
 };
 
 // APPLY EVENT
@@ -468,20 +468,20 @@ const boxBottomText = document.getElementById("memeBox__bottomText");
 // DEFINE STYLING CONTOUR
 //NONE
 const applyNoContour = () => {
-  boxTopText.style.textShadow = "none";
-  boxBottomText.style.textShadow = "none";
+	boxTopText.style.textShadow = "none";
+	boxBottomText.style.textShadow = "none";
 };
 
 //WHITE
 const applyWhiteContour = () => {
-  boxTopText.style.textShadow = "1px 1px 2px white";
-  boxBottomText.style.textShadow = "1px 1px 2px white";
+	boxTopText.style.textShadow = "1px 1px 2px white";
+	boxBottomText.style.textShadow = "1px 1px 2px white";
 };
 
 //BLACK
 const applyBlackContour = () => {
-  boxTopText.style.textShadow = "1px 1px 2px black";
-  boxBottomText.style.textShadow = "1px 1px 2px black";
+	boxTopText.style.textShadow = "1px 1px 2px black";
+	boxBottomText.style.textShadow = "1px 1px 2px black";
 };
 
 // APPLY EVENTS
@@ -506,26 +506,26 @@ blackContourButton.addEventListener("click", applyBlackContour);
 // GET HTML ELEMENTS
 
 document.addEventListener("DOMContentLoaded", (e) => {
-  const imgUploadUrl = document.getElementById("imgUpload__url");
-  const imgUploadPc = document.getElementById("imgUpload__pc");
-  const imgMeme = document.getElementById("imgMeme");
+	const imgUploadUrl = document.getElementById("imgUpload__url");
+	const imgUploadPc = document.getElementById("imgUpload__pc");
+	const imgMeme = document.getElementById("imgMeme");
 
-  // UPLOAD IMG BY URL
+	// UPLOAD IMG BY URL
 
-  imgUploadUrl.addEventListener("input", (e) => {
-    const imgUrl = imgUploadUrl.value;
-    imgMeme.style.backgroundImage = `url('${imgUrl}')`;
-    imgMeme.style.backgroundSize = "cover";
-  });
+	imgUploadUrl.addEventListener("input", (e) => {
+		const imgUrl = imgUploadUrl.value;
+		imgMeme.style.backgroundImage = `url('${imgUrl}')`;
+		imgMeme.style.backgroundSize = "cover";
+	});
 
-  // UPLOAD IMG FROM FILE ON PC
+	// UPLOAD IMG FROM FILE ON PC
 
-  imgUploadPc.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    const imgUrl = URL.createObjectURL(file);
-    imgMeme.style.backgroundImage = `url('${imgUrl}')`;
-    imgMeme.style.backgroundSize = "cover";
-  });
+	imgUploadPc.addEventListener("change", (e) => {
+		const file = e.target.files[0];
+		const imgUrl = URL.createObjectURL(file);
+		imgMeme.style.backgroundImage = `url('${imgUrl}')`;
+		imgMeme.style.backgroundSize = "cover";
+	});
 });
 
 // -------------------------------------------------------------------
@@ -540,52 +540,52 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 const colorPicker = document.getElementById("imgControlPanelBackground__color");
 const compositionSelect = document.getElementById(
-  "imgControlPanel-background__comp"
+	"imgControlPanel-background__comp"
 );
 const imgMeme = document.getElementById("imgMeme");
 
 // FUNCTION TO APPLY SELECTED COMPOSITION AND COLOR
 
 const applyCompositionAndColor = () => {
-  const color = colorPicker.value;
-  const composition = compositionSelect.value;
+	const color = colorPicker.value;
+	const composition = compositionSelect.value;
 
-  switch (composition) {
-    case "unset":
-      // Original
-      imgMeme.style.filter = "none";
-      imgMeme.style.backgroundColor = "transparent";
-      break;
-    case "lighten":
-      // Lighten
-      imgMeme.style.filter = `brightness(150%)`;
-      imgMeme.style.backgroundColor = color;
-      break;
-    case "darken":
-      // Darken
-      imgMeme.style.filter = `brightness(50%)`;
-      imgMeme.style.backgroundColor = color;
-      break;
-    case "difference":
-      // Difference
-      imgMeme.style.filter = `invert(100%)`;
-      imgMeme.style.backgroundColor = color;
-      break;
-    case "luminosity":
-      // Luminosity
-      imgMeme.style.filter = `brightness(200%)`;
-      imgMeme.style.backgroundColor = color;
-      break;
-    case "multiply":
-      // Multiply
-      imgMeme.style.filter = `multiply(${color})`;
-      imgMeme.style.backgroundColor = "black";
-      break;
-    default:
-      // Default to unset
-      imgMeme.style.filter = "none";
-      imgMeme.style.backgroundColor = "transparent";
-  }
+	switch (composition) {
+		case "unset":
+			// Original
+			imgMeme.style.filter = "none";
+			imgMeme.style.backgroundColor = "transparent";
+			break;
+		case "lighten":
+			// Lighten
+			imgMeme.style.filter = `brightness(150%)`;
+			imgMeme.style.backgroundColor = color;
+			break;
+		case "darken":
+			// Darken
+			imgMeme.style.filter = `brightness(50%)`;
+			imgMeme.style.backgroundColor = color;
+			break;
+		case "difference":
+			// Difference
+			imgMeme.style.filter = `invert(100%)`;
+			imgMeme.style.backgroundColor = color;
+			break;
+		case "luminosity":
+			// Luminosity
+			imgMeme.style.filter = `brightness(200%)`;
+			imgMeme.style.backgroundColor = color;
+			break;
+		case "multiply":
+			// Multiply
+			imgMeme.style.filter = `multiply(${color})`;
+			imgMeme.style.backgroundColor = "black";
+			break;
+		default:
+			// Default to unset
+			imgMeme.style.filter = "none";
+			imgMeme.style.backgroundColor = "transparent";
+	}
 };
 
 // APPLY FUNCTION
@@ -626,92 +626,92 @@ filtersNegative.addEventListener("input", getFilterValue);
 // DEFAULT VALUES
 
 buttonResetFilters.addEventListener("click", () => {
-  const brightness = 1;
-  const opacity = 1;
-  const contrast = 100;
-  const blur = 0;
-  const grayscale = 0;
-  const sepia = 0;
-  const tone = 0;
-  const saturate = 100;
-  const negative = 0;
-  resetFilter(
-    brightness,
-    opacity,
-    contrast,
-    blur,
-    grayscale,
-    sepia,
-    tone,
-    saturate,
-    negative
-  );
+	const brightness = 1;
+	const opacity = 1;
+	const contrast = 100;
+	const blur = 0;
+	const grayscale = 0;
+	const sepia = 0;
+	const tone = 0;
+	const saturate = 100;
+	const negative = 0;
+	resetFilter(
+		brightness,
+		opacity,
+		contrast,
+		blur,
+		grayscale,
+		sepia,
+		tone,
+		saturate,
+		negative
+	);
 
-  // SET THE VALUES OF THE SLIDERS AFTER RESETTING
-  filtersBrightness.value = brightness;
-  filtersOpacity.value = opacity;
-  filtersContrast.value = contrast;
-  filtersBlur.value = blur;
-  filtersGrayscale.value = grayscale;
-  filtersSepia.value = sepia;
-  filtersTone.value = tone;
-  filtersSaturate.value = saturate;
-  filtersNegative.value = negative;
+	// SET THE VALUES OF THE SLIDERS AFTER RESETTING
+	filtersBrightness.value = brightness;
+	filtersOpacity.value = opacity;
+	filtersContrast.value = contrast;
+	filtersBlur.value = blur;
+	filtersGrayscale.value = grayscale;
+	filtersSepia.value = sepia;
+	filtersTone.value = tone;
+	filtersSaturate.value = saturate;
+	filtersNegative.value = negative;
 });
 
 // FUNCTION TO APPLY SELECTED FILTERS
 function getFilterValue() {
-  const brightness = filtersBrightness.value;
-  const opacity = filtersOpacity.value;
-  const contrast = filtersContrast.value;
-  const blur = filtersBlur.value;
-  const grayscale = filtersGrayscale.value;
-  const sepia = filtersSepia.value;
-  const tone = filtersTone.value;
-  const saturate = filtersSaturate.value;
-  const negative = filtersNegative.value;
-  resetFilter(
-    brightness,
-    opacity,
-    contrast,
-    blur,
-    grayscale,
-    sepia,
-    tone,
-    saturate,
-    negative
-  );
+	const brightness = filtersBrightness.value;
+	const opacity = filtersOpacity.value;
+	const contrast = filtersContrast.value;
+	const blur = filtersBlur.value;
+	const grayscale = filtersGrayscale.value;
+	const sepia = filtersSepia.value;
+	const tone = filtersTone.value;
+	const saturate = filtersSaturate.value;
+	const negative = filtersNegative.value;
+	resetFilter(
+		brightness,
+		opacity,
+		contrast,
+		blur,
+		grayscale,
+		sepia,
+		tone,
+		saturate,
+		negative
+	);
 }
 
 // FUNCTION TO APPLY SELECTED FILTERS
 function resetFilter(
-  brightness,
-  opacity,
-  contrast,
-  blur,
-  grayscale,
-  sepia,
-  tone,
-  saturate,
-  negative
+	brightness,
+	opacity,
+	contrast,
+	blur,
+	grayscale,
+	sepia,
+	tone,
+	saturate,
+	negative
 ) {
-  brightness = `brightness(${brightness})`;
-  opacity = `opacity(${opacity})`;
-  contrast = `contrast(${contrast}%)`;
-  blur = `blur(${blur}px)`;
-  grayscale = `grayscale(${grayscale}%)`;
-  sepia = `sepia(${sepia}%)`;
-  const hueRotate = `hue-rotate(${tone}deg)`;
-  saturate = `saturate(${saturate}%)`;
-  invert = `invert(${negative})`;
+	brightness = `brightness(${brightness})`;
+	opacity = `opacity(${opacity})`;
+	contrast = `contrast(${contrast}%)`;
+	blur = `blur(${blur}px)`;
+	grayscale = `grayscale(${grayscale}%)`;
+	sepia = `sepia(${sepia}%)`;
+	const hueRotate = `hue-rotate(${tone}deg)`;
+	saturate = `saturate(${saturate}%)`;
+	invert = `invert(${negative})`;
 
-  const filterValue = `${brightness} ${opacity} ${contrast} ${blur} ${grayscale} ${sepia} ${hueRotate} ${saturate} ${invert}`;
+	const filterValue = `${brightness} ${opacity} ${contrast} ${blur} ${grayscale} ${sepia} ${hueRotate} ${saturate} ${invert}`;
 
-  img__Meme.style.filter = filterValue;
+	img__Meme.style.filter = filterValue;
 }
 
 buttonResetFilters.addEventListener("click", () => {
-  resetFilter(1, 1, 100, 0, 0, 0, 0, 100, 0);
+	resetFilter(1, 1, 100, 0, 0, 0, 0, 100, 0);
 });
 //  ...................................................
 // DOWNLOAD MEME
@@ -724,45 +724,45 @@ buttonResetFilters.addEventListener("click", () => {
 //--------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
-  const buttonDownloadMeme = document.getElementById("buttonDownloadMeme");
+	const buttonDownloadMeme = document.getElementById("buttonDownloadMeme");
 
-  // ADD BUTTON CLICK EVENT
-  buttonDownloadMeme.addEventListener("click", () => {
-    const memeBoxPreview = document.getElementById("memeBox__preview");
+	// ADD BUTTON CLICK EVENT
+	buttonDownloadMeme.addEventListener("click", () => {
+		const memeBoxPreview = document.getElementById("memeBox__preview");
 
-    // MANUALLY APPLY STYLES TO TEXT ELEMENTS
-    const textElements = memeBoxPreview.querySelectorAll(".text-element");
-    textElements.forEach((textElement) => {
-      textElement.style.fontFamily = getComputedStyle(textElement).fontFamily;
-      textElement.style.fontSize = getComputedStyle(textElement).fontSize;
-      textElement.style.color = getComputedStyle(textElement).color;
-    });
+		// MANUALLY APPLY STYLES TO TEXT ELEMENTS
+		const textElements = memeBoxPreview.querySelectorAll(".text-element");
+		textElements.forEach((textElement) => {
+			textElement.style.fontFamily = getComputedStyle(textElement).fontFamily;
+			textElement.style.fontSize = getComputedStyle(textElement).fontSize;
+			textElement.style.color = getComputedStyle(textElement).color;
+		});
 
-    // CAPTURES THE CONTENT OF THE DIV AS IMG
-    domtoimage
-      .toBlob(memeBoxPreview)
-      .then((blob) => {
-        const url = window.URL.createObjectURL(blob);
+		// CAPTURES THE CONTENT OF THE DIV AS IMG
+		domtoimage
+			.toBlob(memeBoxPreview)
+			.then((blob) => {
+				const url = window.URL.createObjectURL(blob);
 
-        // CREATES TEMPORARY LINK FOR DOWNLOAD
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "meme.png";
+				// CREATES TEMPORARY LINK FOR DOWNLOAD
+				const a = document.createElement("a");
+				a.href = url;
+				a.download = "meme.png";
 
-        // APPLY THE LINK TO THE DOCUMENT
-        document.body.appendChild(a);
+				// APPLY THE LINK TO THE DOCUMENT
+				document.body.appendChild(a);
 
-        a.click();
+				a.click();
 
-        // CLEAN THE LINK
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-      })
-      .then(() => {})
-      .catch((error) => {
-        console.error("Error en la descarga:", error);
-      });
-  });
+				// CLEAN THE LINK
+				document.body.removeChild(a);
+				window.URL.revokeObjectURL(url);
+			})
+			.then(() => {})
+			.catch((error) => {
+				console.error("Error en la descarga:", error);
+			});
+	});
 });
 
 //--------------------------------------------------
@@ -774,7 +774,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //--------------------------------------------------
 
 const reloadPage = () => {
-  location.reload();
+	location.reload();
 };
 
 const buttonReloadMeme = document.getElementById("buttonReloadMeme");

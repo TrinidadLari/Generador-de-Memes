@@ -153,8 +153,10 @@ header {
   height: 70%;
   background-color: black;
   width: 100%;
-  object-fit: cover;
-  object-position: center left;
+  /* background-size: auto 100%; */
+background-size: 100% 100%;
+  /* object-fit: cover;
+  object-position: center left; */
 }
 
 .memeBox__preview p {
